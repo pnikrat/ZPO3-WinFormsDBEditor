@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsDBEditor.Model;
 using WinFormsDBEditor.View;
 
 namespace WinFormsDBEditor.Presenter {
@@ -10,19 +11,23 @@ namespace WinFormsDBEditor.Presenter {
     {
 
         private readonly IMainView _view;
-        //private PatientData currentPatient;
+        private DBManager _data;
+        private NewDataSet.CustomersDataTable temp;
         //private Dictionary<string, bool> ErrorDict;
 
         public MainPresenter(IMainView MainView) {
             _view = MainView;
-            //currentPatient = new PatientData();
+            _data = new DBManager(@"PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=..\..\Database\Nwind.mdb");
             SubscribeToFormEvents();
-            //SetupErrorDict();
+            displayCustomersTable();
         }
 
         private void SubscribeToFormEvents() {
             //_view.PrescriptionNumberChanged += this.PrescriptionNumberChanged;
         }
 
+        private void displayCustomersTable() {
+            temp = _data.getCustomersTable();
+        }
     }
 }

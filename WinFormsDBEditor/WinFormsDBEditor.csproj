@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\DBManager.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
+    <Compile Include="Model\UsedDataSet.cs" />
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
@@ -79,7 +81,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Folder Include="Database\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
