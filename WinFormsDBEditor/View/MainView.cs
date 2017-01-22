@@ -21,6 +21,11 @@ namespace WinFormsDBEditor {
 
         private void InitializeView() {
             TablesTabControl.SizeMode = TabSizeMode.Fixed;
+            NewRecordButton.Text = "New order...";
+            EditRecordButton.Text = "Edit record...";
+            DeleteRecordButton.Text = "Delete record";
+            FilterButton.Text = "Filter results...";
+            StatusLabel.Text = "Data loaded";
         }
 
         public void AddTabPageToTablesTabControl(TabPage page)

@@ -36,7 +36,7 @@ namespace WinFormsDBEditor.Presenter {
 
         private void DataControlInitialization()
         {
-            WireUpTableViewWithTablePresenter(_data.getOrdersFiltered());
+            WireUpTableViewWithTablePresenter(_data.getOrdersTable());
             WireUpTableViewWithTablePresenter(_data.getCustomersTable());
             WireUpTableViewWithTablePresenter(_data.getProductsTable());
         }
