@@ -12,22 +12,21 @@ namespace WinFormsDBEditor.Presenter {
 
         private readonly IMainView _view;
         private DBManager _data;
-        private NewDataSet.CustomersDataTable temp;
-        //private Dictionary<string, bool> ErrorDict;
 
         public MainPresenter(IMainView MainView) {
             _view = MainView;
             _data = new DBManager(@"PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=..\..\Database\Nwind.mdb");
             SubscribeToFormEvents();
-            displayCustomersTable();
+            DataControlInitialization();
         }
 
         private void SubscribeToFormEvents() {
-            //_view.PrescriptionNumberChanged += this.PrescriptionNumberChanged;
+            //_view.DataControlInitialization += this.DataControlInitialization;
         }
 
-        private void displayCustomersTable() {
-            temp = _data.getCustomersTable();
+        private void DataControlInitialization()
+        {
+            _view.SetDataControlSource(_data.getOrdersFiltered());
         }
     }
 }

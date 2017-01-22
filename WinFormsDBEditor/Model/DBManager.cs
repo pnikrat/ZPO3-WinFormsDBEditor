@@ -56,16 +56,26 @@ namespace WinFormsDBEditor.Model {
             dataAdapter.Fill(setToFill, "OrderDetails");
         }
 
-        public NewDataSet.CustomersDataTable getCustomersTable() {
-            return theSet.Customers;
+        public DataView getCustomersTable() {
+            return theSet.Customers.DefaultView;
         }
 
-        public NewDataSet.ProductsDataTable getProductsTable() {
-            return theSet.Products;
+        public DataView getProductsTable() {
+            return theSet.Products.DefaultView;
         }
 
-        public NewDataSet.OrdersDataTable getOrdersTable() {
-            return theSet.Orders;
+        public DataView getOrdersTable() {
+            return theSet.Orders.DefaultView;
+        }
+
+        public DataView getCustomersFromLondon()
+        {
+            return new DataView(theSet.Customers, "City = 'London'", "City", DataViewRowState.CurrentRows);
+        }
+
+        public DataView getOrdersFiltered()
+        {
+            return new DataView(theSet.Orders, "ShipCity = 'Berlin'", "OrderID", DataViewRowState.CurrentRows);
         }
     }
 }
