@@ -47,8 +47,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\DBManager.cs" />
+    <Compile Include="Presenter\ITablePresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Model\UsedDataSet.cs" />
+    <Compile Include="Presenter\TablePresenter.cs" />
+    <Compile Include="View\ITableView.cs" />
+    <Compile Include="View\TableView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\TableView.Designer.cs">
+      <DependentUpon>TableView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
@@ -69,6 +78,9 @@
     </Compile>
     <EmbeddedResource Include="View\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TableView.resx">
+      <DependentUpon>TableView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
