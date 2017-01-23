@@ -58,7 +58,6 @@
     <Compile Include="Presenter\EventArgs.cs" />
     <Compile Include="Presenter\ITablePresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
-    <Compile Include="Model\UsedDataSet.cs" />
     <Compile Include="Presenter\TablePresenter.cs" />
     <Compile Include="View\ITableView.cs" />
     <Compile Include="View\TableView.cs">
