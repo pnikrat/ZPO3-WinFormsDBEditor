@@ -8,52 +8,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsDBEditor;
+using WinFormsDBEditor.NwindTypedDSTableAdapters;
 
 namespace WinFormsDBEditor.Model {
     public class DBManager {
 
         private OleDbConnection connection;
-        private OleDbDataAdapter dataAdapter;
-        private DataSet usedDataSet;
-        private NewDataSet theSet;
+        private CustomersTableAdapter customersAdapter;
+        private ProductsTableAdapter productsAdapter;
+        private OrdersTableAdapter ordersAdapter;
+        private Order_DetailsTableAdapter orderDetailsAdapter;
+        private NwindTypedDS theSet;
 
-        public DBManager(string connectionString) {
-            establishConnection(connectionString);
-            createDataAdapterAndDataSet();
-            createSchema();
-            initNewDataSet();
+        public DBManager() {
+            createDataAdaptersAndDataSet();
+            fillDataSet();
         }
 
-        private void establishConnection(string connectionString) {
-            connection = new OleDbConnection(connectionString);
+        private void createDataAdaptersAndDataSet() {
+            theSet = new NwindTypedDS();
+            customersAdapter = new CustomersTableAdapter();
+            productsAdapter = new ProductsTableAdapter();
+            ordersAdapter = new OrdersTableAdapter();
+            orderDetailsAdapter = new Order_DetailsTableAdapter();
         }
 
-        private void createDataAdapterAndDataSet() {
-            usedDataSet = new DataSet();
-            dataAdapter = new OleDbDataAdapter();
+        private void fillDataSet() {
+            customersAdapter.Fill(theSet.Customers);
+            productsAdapter.Fill(theSet.Products);
+            ordersAdapter.Fill(theSet.Orders);
+            orderDetailsAdapter.Fill(theSet.Order_Details);
         }
 
-        private void createSchema() {
-            if (!File.Exists(@"..\..\UsedDataSet.xsd")) {
-                fillDataSet(usedDataSet);
-                usedDataSet.WriteXmlSchema(@"..\..\UsedDataSet.xsd");
-            }
-        }
-
-        private void initNewDataSet() {
-            theSet = new NewDataSet();
-            fillDataSet(theSet);
-        }
-
-        private void fillDataSet(DataSet setToFill) {
-            dataAdapter.SelectCommand = new OleDbCommand("SELECT * FROM Customers", connection);
-            dataAdapter.Fill(setToFill, "Customers");
-            dataAdapter.SelectCommand = new OleDbCommand("SELECT * FROM Products", connection);
-            dataAdapter.Fill(setToFill, "Products");
-            dataAdapter.SelectCommand = new OleDbCommand("SELECT * FROM Orders", connection);
-            dataAdapter.Fill(setToFill, "Orders");
-            dataAdapter.SelectCommand = new OleDbCommand("SELECT * FROM [Order Details]", connection);
-            dataAdapter.Fill(setToFill, "OrderDetails");
+        public NwindTypedDS getTheSet() {
+            return theSet;
         }
 
         public DataView getCustomersTable() {
@@ -76,6 +64,11 @@ namespace WinFormsDBEditor.Model {
         public DataView getOrdersFiltered()
         {
             return new DataView(theSet.Orders, "ShipCity = 'Berlin'", "OrderID", DataViewRowState.CurrentRows);
+        }
+
+        public void EditOrderRow(int rowNumber) {
+            
+            //theSet.Orders.FindByOrderID(rowNumber)
         }
     }
 }

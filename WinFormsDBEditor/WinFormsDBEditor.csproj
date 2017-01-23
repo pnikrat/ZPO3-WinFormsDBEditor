@@ -47,6 +47,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\DBManager.cs" />
+    <Compile Include="NwindTypedDS.cs">
+      <DependentUpon>NwindTypedDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NwindTypedDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NwindTypedDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Presenter\EventArgs.cs" />
     <Compile Include="Presenter\ITablePresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Model\UsedDataSet.cs" />
@@ -82,6 +91,17 @@
     <EmbeddedResource Include="View\TableView.resx">
       <DependentUpon>TableView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="NwindTypedDS.xsc">
+      <DependentUpon>NwindTypedDS.xsd</DependentUpon>
+    </None>
+    <None Include="NwindTypedDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NwindTypedDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="NwindTypedDS.xss">
+      <DependentUpon>NwindTypedDS.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,8 +115,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Database\" />
+    <Content Include="Nwind.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

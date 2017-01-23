@@ -7,18 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsDBEditor.Presenter;
 
 namespace WinFormsDBEditor.View
 {
     public partial class TableView : UserControl, ITableView
     {
         TabPage associatedPage;
+        DataView associatedDataView;
+        public event EventHandler<EventArgs<int>> RowChange;
 
         public TableView(DataView tableToShow)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             InitializeTable(tableToShow);
+            associatedDataView = tableToShow;
         }
 
         private void InitializeTable(DataView tableToShow)
@@ -39,6 +43,16 @@ namespace WinFormsDBEditor.View
         public TabPage getTabPage()
         {
             return associatedPage;
+        }
+
+        protected virtual void OnRowChange(EventArgs<int> args) {
+            var eventHandler = this.RowChange;
+            if (eventHandler != null)
+                eventHandler.Invoke(this, args);
+        }
+
+        private void dataControl_RowEnter(object sender, DataGridViewCellEventArgs e) {
+            OnRowChange(new EventArgs<int>(e.RowIndex));
         }
     }
 }

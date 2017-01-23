@@ -14,7 +14,7 @@ namespace WinFormsDBEditor {
 
             MainView view = new MainView();
             MainPresenter presenter = new MainPresenter(view);
-            
+
             Application.Run(view);
         }
     }

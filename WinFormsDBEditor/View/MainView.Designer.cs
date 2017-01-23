@@ -27,11 +27,11 @@
             this.TablesTabControl = new System.Windows.Forms.TabControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.StatusLabel = new System.Windows.Forms.Label();
-            this.NewRecordButton = new System.Windows.Forms.Button();
-            this.FilterButton = new System.Windows.Forms.Button();
-            this.DeleteRecordButton = new System.Windows.Forms.Button();
-            this.EditRecordButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.NewRecordButton = new System.Windows.Forms.Button();
+            this.EditRecordButton = new System.Windows.Forms.Button();
+            this.DeleteRecordButton = new System.Windows.Forms.Button();
+            this.FilterButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -63,6 +63,7 @@
             this.TablesTabControl.SelectedIndex = 0;
             this.TablesTabControl.Size = new System.Drawing.Size(778, 599);
             this.TablesTabControl.TabIndex = 3;
+            this.TablesTabControl.SelectedIndexChanged += new System.EventHandler(this.TablesTabControl_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -99,50 +100,6 @@
             this.StatusLabel.TabIndex = 4;
             this.StatusLabel.Text = "label1";
             // 
-            // NewRecordButton
-            // 
-            this.NewRecordButton.AutoSize = true;
-            this.NewRecordButton.Location = new System.Drawing.Point(10, 10);
-            this.NewRecordButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.NewRecordButton.Name = "NewRecordButton";
-            this.NewRecordButton.Size = new System.Drawing.Size(53, 23);
-            this.NewRecordButton.TabIndex = 0;
-            this.NewRecordButton.Text = "button1";
-            this.NewRecordButton.UseVisualStyleBackColor = true;
-            // 
-            // FilterButton
-            // 
-            this.FilterButton.AutoSize = true;
-            this.FilterButton.Location = new System.Drawing.Point(229, 10);
-            this.FilterButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.FilterButton.Name = "FilterButton";
-            this.FilterButton.Size = new System.Drawing.Size(53, 23);
-            this.FilterButton.TabIndex = 3;
-            this.FilterButton.Text = "button1";
-            this.FilterButton.UseVisualStyleBackColor = true;
-            // 
-            // DeleteRecordButton
-            // 
-            this.DeleteRecordButton.AutoSize = true;
-            this.DeleteRecordButton.Location = new System.Drawing.Point(156, 10);
-            this.DeleteRecordButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.DeleteRecordButton.Name = "DeleteRecordButton";
-            this.DeleteRecordButton.Size = new System.Drawing.Size(53, 23);
-            this.DeleteRecordButton.TabIndex = 2;
-            this.DeleteRecordButton.Text = "button1";
-            this.DeleteRecordButton.UseVisualStyleBackColor = true;
-            // 
-            // EditRecordButton
-            // 
-            this.EditRecordButton.AutoSize = true;
-            this.EditRecordButton.Location = new System.Drawing.Point(83, 10);
-            this.EditRecordButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.EditRecordButton.Name = "EditRecordButton";
-            this.EditRecordButton.Size = new System.Drawing.Size(53, 23);
-            this.EditRecordButton.TabIndex = 1;
-            this.EditRecordButton.Text = "button1";
-            this.EditRecordButton.UseVisualStyleBackColor = true;
-            // 
             // flowLayoutPanel1
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.flowLayoutPanel1, 4);
@@ -157,6 +114,50 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(480, 44);
             this.flowLayoutPanel1.TabIndex = 5;
+            // 
+            // NewRecordButton
+            // 
+            this.NewRecordButton.AutoSize = true;
+            this.NewRecordButton.Location = new System.Drawing.Point(10, 10);
+            this.NewRecordButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.NewRecordButton.Name = "NewRecordButton";
+            this.NewRecordButton.Size = new System.Drawing.Size(53, 23);
+            this.NewRecordButton.TabIndex = 0;
+            this.NewRecordButton.Text = "button1";
+            this.NewRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // EditRecordButton
+            // 
+            this.EditRecordButton.AutoSize = true;
+            this.EditRecordButton.Location = new System.Drawing.Point(83, 10);
+            this.EditRecordButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.EditRecordButton.Name = "EditRecordButton";
+            this.EditRecordButton.Size = new System.Drawing.Size(53, 23);
+            this.EditRecordButton.TabIndex = 1;
+            this.EditRecordButton.Text = "button1";
+            this.EditRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteRecordButton
+            // 
+            this.DeleteRecordButton.AutoSize = true;
+            this.DeleteRecordButton.Location = new System.Drawing.Point(156, 10);
+            this.DeleteRecordButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.DeleteRecordButton.Name = "DeleteRecordButton";
+            this.DeleteRecordButton.Size = new System.Drawing.Size(53, 23);
+            this.DeleteRecordButton.TabIndex = 2;
+            this.DeleteRecordButton.Text = "button1";
+            this.DeleteRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // FilterButton
+            // 
+            this.FilterButton.AutoSize = true;
+            this.FilterButton.Location = new System.Drawing.Point(229, 10);
+            this.FilterButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.FilterButton.Name = "FilterButton";
+            this.FilterButton.Size = new System.Drawing.Size(53, 23);
+            this.FilterButton.TabIndex = 3;
+            this.FilterButton.Text = "button1";
+            this.FilterButton.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 

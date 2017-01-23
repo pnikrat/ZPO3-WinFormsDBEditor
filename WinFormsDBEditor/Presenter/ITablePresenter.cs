@@ -10,5 +10,7 @@ namespace WinFormsDBEditor.Presenter
     public interface ITablePresenter
     {
         ITableView getViewInterface();
+        event EventHandler<EventArgs<int>> RowChangePropagate;
+
     }
 }

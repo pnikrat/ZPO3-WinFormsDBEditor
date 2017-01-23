@@ -40,6 +40,7 @@
             this.dataControl.Name = "dataControl";
             this.dataControl.Size = new System.Drawing.Size(0, 0);
             this.dataControl.TabIndex = 0;
+            this.dataControl.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataControl_RowEnter);
             // 
             // TableView
             // 
