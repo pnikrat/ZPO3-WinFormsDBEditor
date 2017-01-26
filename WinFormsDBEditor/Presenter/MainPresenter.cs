@@ -11,55 +11,45 @@ namespace WinFormsDBEditor.Presenter {
     class MainPresenter 
     {
         private readonly IMainView _view;
+        private IAddNewOrder _popup;
         private DBManager _data;
-        private List<ITablePresenter> dataTabs = new List<ITablePresenter>();
-        private ITablePresenter currentTab;
-        private int currentRowNumber;
+        //private int currentRowNumber;
+        private int currentTab;
 
         public MainPresenter(IMainView MainView) {
             _view = MainView;
             _data = new DBManager();
-            //@"PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=Nwind.mdb"
             SubscribeToFormEvents();
             DataControlInitialization();
-            SubscribeToControlsEvents();
+            currentTab = 0;
         }
 
         private void SubscribeToFormEvents() {
-            //_view.DataControlInitialization += this.DataControlInitialization;
             _view.TabChange += this.TabChange;
-        }
-
-        private void SubscribeToControlsEvents() {
-            foreach (ITablePresenter _control in dataTabs) {
-                _control.RowChangePropagate += this.RowChangeInControl;
-            }
-        }
-
-        private void WireUpTableViewWithTablePresenter(DataView table)
-        {
-            TableView singleTable = new TableView(table);
-            TablePresenter singlePresenter = new TablePresenter(singleTable);
-            dataTabs.Add(singlePresenter);
-            _view.AddTabPageToTablesTabControl(singlePresenter.getViewInterface().getTabPage());
+            _view.NewRecordCommand += this.NewRecordCommand;
         }
 
         private void DataControlInitialization()
         {
-            WireUpTableViewWithTablePresenter(_data.getOrdersTable());
-            WireUpTableViewWithTablePresenter(_data.getCustomersTable());
-            WireUpTableViewWithTablePresenter(_data.getProductsTable());
-            currentTab = dataTabs[0];
+            _view.AcceptOrdersTable(_data.getOrdersTable());
+            _view.AcceptCustomersTable(_data.getCustomersTable());
+            _view.AcceptProductsTable(_data.getProductsTable());
         }
 
         private void TabChange(object sender, EventArgs<int> args) {
             //0 - orders, 1 - customers, 2 - products
-            currentTab = dataTabs[args.value];
+            currentTab = args.value;
         }
 
-        private void RowChangeInControl(object sender, EventArgs<int> args) {
-            currentRowNumber = args.value;
-            
+        private void NewRecordCommand(object sender, EventArgs args) {
+            AddNewOrder form = new AddNewOrder(_data);
+            _popup = (IAddNewOrder)form;
+            _popup.insertOccured += this.UpdateOrdersTable;
+            form.Show();
+        }
+
+        private void UpdateOrdersTable(object sender, EventArgs args) {
+            _view.UpdateOrdersTable();
         }
     }
 }

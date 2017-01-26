@@ -10,12 +10,14 @@ using WinFormsDBEditor.Presenter;
 namespace WinFormsDBEditor.View {
     public interface IMainView {
 
-        void SetDataControlSource(DataView table);
-        void AddTabPageToTablesTabControl(TabPage page);
 
+        void AcceptProductsTable(NwindTypedDS.ProductsDataTable _data);
+        void AcceptCustomersTable(NwindTypedDS.CustomersDataTable _data);
+        void AcceptOrdersTable(NwindTypedDS.OrdersDataTable _data);
+        void UpdateOrdersTable();
 
-        event EventHandler DataControlInitialization;
         event EventHandler<EventArgs<int>> TabChange;
+        event EventHandler NewRecordCommand;
 
     }
 }

@@ -34,9 +34,9 @@ namespace WinFormsDBEditor {
         
         private global::System.Data.DataRelation relationCustomersOrders;
         
-        private global::System.Data.DataRelation relationOrdersOrder_Details;
-        
         private global::System.Data.DataRelation relationProductsOrder_Details;
+        
+        private global::System.Data.DataRelation relationOrdersOrder_Details;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -273,8 +273,8 @@ namespace WinFormsDBEditor {
                 }
             }
             this.relationCustomersOrders = this.Relations["CustomersOrders"];
-            this.relationOrdersOrder_Details = this.Relations["OrdersOrder Details"];
             this.relationProductsOrder_Details = this.Relations["ProductsOrder Details"];
+            this.relationOrdersOrder_Details = this.Relations["OrdersOrder Details"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -293,18 +293,40 @@ namespace WinFormsDBEditor {
             base.Tables.Add(this.tableProducts);
             this.tableOrder_Details = new Order_DetailsDataTable();
             base.Tables.Add(this.tableOrder_Details);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("CustomersOrders", new global::System.Data.DataColumn[] {
+                        this.tableCustomers.CustomerIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOrders.CustomerIDColumn});
+            this.tableOrders.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("ProductsOrder Details", new global::System.Data.DataColumn[] {
+                        this.tableProducts.ProductIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOrder_Details.ProductIDColumn});
+            this.tableOrder_Details.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("OrdersOrder Details", new global::System.Data.DataColumn[] {
+                        this.tableOrders.OrderIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOrder_Details.OrderIDColumn});
+            this.tableOrder_Details.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationCustomersOrders = new global::System.Data.DataRelation("CustomersOrders", new global::System.Data.DataColumn[] {
                         this.tableCustomers.CustomerIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableOrders.CustomerIDColumn}, false);
             this.Relations.Add(this.relationCustomersOrders);
-            this.relationOrdersOrder_Details = new global::System.Data.DataRelation("OrdersOrder Details", new global::System.Data.DataColumn[] {
-                        this.tableOrders.OrderIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableOrder_Details.OrderIDColumn}, false);
-            this.Relations.Add(this.relationOrdersOrder_Details);
             this.relationProductsOrder_Details = new global::System.Data.DataRelation("ProductsOrder Details", new global::System.Data.DataColumn[] {
                         this.tableProducts.ProductIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableOrder_Details.ProductIDColumn}, false);
             this.Relations.Add(this.relationProductsOrder_Details);
+            this.relationOrdersOrder_Details = new global::System.Data.DataRelation("OrdersOrder Details", new global::System.Data.DataColumn[] {
+                        this.tableOrders.OrderIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOrder_Details.OrderIDColumn}, false);
+            this.Relations.Add(this.relationOrdersOrder_Details);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3075,23 +3097,23 @@ namespace WinFormsDBEditor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OrdersRow OrdersRow {
-                get {
-                    return ((OrdersRow)(this.GetParentRow(this.Table.ParentRelations["OrdersOrder Details"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["OrdersOrder Details"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ProductsRow ProductsRow {
                 get {
                     return ((ProductsRow)(this.GetParentRow(this.Table.ParentRelations["ProductsOrder Details"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["ProductsOrder Details"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OrdersRow OrdersRow {
+                get {
+                    return ((OrdersRow)(this.GetParentRow(this.Table.ParentRelations["OrdersOrder Details"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["OrdersOrder Details"]);
                 }
             }
             
@@ -4216,13 +4238,33 @@ namespace WinFormsDBEditor.NwindTypedDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT OrderID, CustomerID, EmployeeID, OrderDate, RequiredDate, ShippedDate, Shi" +
                 "pVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, Ship" +
                 "Country FROM Orders";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "INSERT INTO `Orders` (`CustomerID`, `EmployeeID`, `OrderDate`, `RequiredDate`, `S" +
+                "hippedDate`, `ShipVia`, `Freight`, `ShipName`, `ShipAddress`, `ShipCity`, `ShipR" +
+                "egion`, `ShipPostalCode`, `ShipCountry`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?" +
+                ", ?, ?)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CustomerID", global::System.Data.OleDb.OleDbType.WChar, 5, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CustomerID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EmployeeID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EmployeeID", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("OrderDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OrderDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("RequiredDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RequiredDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ShippedDate", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ShippedDate", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ShipVia", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ShipVia", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Freight", global::System.Data.OleDb.OleDbType.Currency, 0, global::System.Data.ParameterDirection.Input, ((byte)(19)), ((byte)(0)), "Freight", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ShipName", global::System.Data.OleDb.OleDbType.WChar, 40, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ShipName", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ShipAddress", global::System.Data.OleDb.OleDbType.WChar, 60, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ShipAddress", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ShipCity", global::System.Data.OleDb.OleDbType.WChar, 15, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ShipCity", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ShipRegion", global::System.Data.OleDb.OleDbType.WChar, 15, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ShipRegion", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ShipPostalCode", global::System.Data.OleDb.OleDbType.WChar, 10, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ShipPostalCode", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ShipCountry", global::System.Data.OleDb.OleDbType.WChar, 15, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ShipCountry", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4732,6 +4774,107 @@ namespace WinFormsDBEditor.NwindTypedDSTableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(string CustomerID, global::System.Nullable<int> EmployeeID, global::System.Nullable<global::System.DateTime> OrderDate, global::System.Nullable<global::System.DateTime> RequiredDate, global::System.Nullable<global::System.DateTime> ShippedDate, global::System.Nullable<int> ShipVia, global::System.Nullable<decimal> Freight, string ShipName, string ShipAddress, string ShipCity, string ShipRegion, string ShipPostalCode, string ShipCountry) {
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[1];
+            if ((CustomerID == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(CustomerID));
+            }
+            if ((EmployeeID.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(EmployeeID.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((OrderDate.HasValue == true)) {
+                command.Parameters[2].Value = ((System.DateTime)(OrderDate.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((RequiredDate.HasValue == true)) {
+                command.Parameters[3].Value = ((System.DateTime)(RequiredDate.Value));
+            }
+            else {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((ShippedDate.HasValue == true)) {
+                command.Parameters[4].Value = ((System.DateTime)(ShippedDate.Value));
+            }
+            else {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((ShipVia.HasValue == true)) {
+                command.Parameters[5].Value = ((int)(ShipVia.Value));
+            }
+            else {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((Freight.HasValue == true)) {
+                command.Parameters[6].Value = ((decimal)(Freight.Value));
+            }
+            else {
+                command.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((ShipName == null)) {
+                command.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[7].Value = ((string)(ShipName));
+            }
+            if ((ShipAddress == null)) {
+                command.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[8].Value = ((string)(ShipAddress));
+            }
+            if ((ShipCity == null)) {
+                command.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[9].Value = ((string)(ShipCity));
+            }
+            if ((ShipRegion == null)) {
+                command.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[10].Value = ((string)(ShipRegion));
+            }
+            if ((ShipPostalCode == null)) {
+                command.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[11].Value = ((string)(ShipPostalCode));
+            }
+            if ((ShipCountry == null)) {
+                command.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[12].Value = ((string)(ShipCountry));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

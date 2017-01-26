@@ -56,16 +56,14 @@
       <DependentUpon>NwindTypedDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Presenter\EventArgs.cs" />
-    <Compile Include="Presenter\ITablePresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
-    <Compile Include="Presenter\TablePresenter.cs" />
-    <Compile Include="View\ITableView.cs" />
-    <Compile Include="View\TableView.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="View\AddNewOrder.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\TableView.Designer.cs">
-      <DependentUpon>TableView.cs</DependentUpon>
+    <Compile Include="View\AddNewOrder.Designer.cs">
+      <DependentUpon>AddNewOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\IAddNewOrder.cs" />
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
@@ -84,11 +82,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\AddNewOrder.resx">
+      <DependentUpon>AddNewOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\TableView.resx">
-      <DependentUpon>TableView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="NwindTypedDS.xsc">
       <DependentUpon>NwindTypedDS.xsd</DependentUpon>
@@ -96,7 +94,7 @@
     <None Include="NwindTypedDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>NwindTypedDS.Designer.cs</LastGenOutput>
+      <LastGenOutput>NwindTypedDS2.Designer.cs</LastGenOutput>
     </None>
     <None Include="NwindTypedDS.xss">
       <DependentUpon>NwindTypedDS.xsd</DependentUpon>
@@ -116,9 +114,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Nwind.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Nwind.mdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

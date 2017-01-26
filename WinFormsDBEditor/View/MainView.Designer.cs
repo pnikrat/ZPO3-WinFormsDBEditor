@@ -25,6 +25,12 @@
         private void InitializeComponent() {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TablesTabControl = new System.Windows.Forms.TabControl();
+            this.OrdersPage = new System.Windows.Forms.TabPage();
+            this.OrdersGridView = new System.Windows.Forms.DataGridView();
+            this.CustomersPage = new System.Windows.Forms.TabPage();
+            this.CustomersGridView = new System.Windows.Forms.DataGridView();
+            this.ProductsPage = new System.Windows.Forms.TabPage();
+            this.ProductsGridView = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -33,6 +39,13 @@
             this.DeleteRecordButton = new System.Windows.Forms.Button();
             this.FilterButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.TablesTabControl.SuspendLayout();
+            this.OrdersPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
+            this.CustomersPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomersGridView)).BeginInit();
+            this.ProductsPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductsGridView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +70,9 @@
             // TablesTabControl
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.TablesTabControl, 2);
+            this.TablesTabControl.Controls.Add(this.OrdersPage);
+            this.TablesTabControl.Controls.Add(this.CustomersPage);
+            this.TablesTabControl.Controls.Add(this.ProductsPage);
             this.TablesTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TablesTabControl.Location = new System.Drawing.Point(3, 139);
             this.TablesTabControl.Name = "TablesTabControl";
@@ -64,6 +80,63 @@
             this.TablesTabControl.Size = new System.Drawing.Size(778, 599);
             this.TablesTabControl.TabIndex = 3;
             this.TablesTabControl.SelectedIndexChanged += new System.EventHandler(this.TablesTabControl_SelectedIndexChanged);
+            // 
+            // OrdersPage
+            // 
+            this.OrdersPage.Controls.Add(this.OrdersGridView);
+            this.OrdersPage.Location = new System.Drawing.Point(4, 22);
+            this.OrdersPage.Name = "OrdersPage";
+            this.OrdersPage.Size = new System.Drawing.Size(770, 573);
+            this.OrdersPage.TabIndex = 0;
+            this.OrdersPage.Text = "Orders";
+            this.OrdersPage.UseVisualStyleBackColor = true;
+            // 
+            // OrdersGridView
+            // 
+            this.OrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrdersGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrdersGridView.Location = new System.Drawing.Point(0, 0);
+            this.OrdersGridView.Name = "OrdersGridView";
+            this.OrdersGridView.Size = new System.Drawing.Size(770, 573);
+            this.OrdersGridView.TabIndex = 0;
+            // 
+            // CustomersPage
+            // 
+            this.CustomersPage.Controls.Add(this.CustomersGridView);
+            this.CustomersPage.Location = new System.Drawing.Point(4, 22);
+            this.CustomersPage.Name = "CustomersPage";
+            this.CustomersPage.Size = new System.Drawing.Size(770, 573);
+            this.CustomersPage.TabIndex = 1;
+            this.CustomersPage.Text = "Customers";
+            this.CustomersPage.UseVisualStyleBackColor = true;
+            // 
+            // CustomersGridView
+            // 
+            this.CustomersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CustomersGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomersGridView.Location = new System.Drawing.Point(0, 0);
+            this.CustomersGridView.Name = "CustomersGridView";
+            this.CustomersGridView.Size = new System.Drawing.Size(770, 573);
+            this.CustomersGridView.TabIndex = 0;
+            // 
+            // ProductsPage
+            // 
+            this.ProductsPage.Controls.Add(this.ProductsGridView);
+            this.ProductsPage.Location = new System.Drawing.Point(4, 22);
+            this.ProductsPage.Name = "ProductsPage";
+            this.ProductsPage.Size = new System.Drawing.Size(770, 573);
+            this.ProductsPage.TabIndex = 2;
+            this.ProductsPage.Text = "Products";
+            this.ProductsPage.UseVisualStyleBackColor = true;
+            // 
+            // ProductsGridView
+            // 
+            this.ProductsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProductsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProductsGridView.Location = new System.Drawing.Point(0, 0);
+            this.ProductsGridView.Name = "ProductsGridView";
+            this.ProductsGridView.Size = new System.Drawing.Size(770, 573);
+            this.ProductsGridView.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -125,6 +198,7 @@
             this.NewRecordButton.TabIndex = 0;
             this.NewRecordButton.Text = "button1";
             this.NewRecordButton.UseVisualStyleBackColor = true;
+            this.NewRecordButton.Click += new System.EventHandler(this.NewRecordButton_Click);
             // 
             // EditRecordButton
             // 
@@ -170,6 +244,13 @@
             this.Text = "Nwind DB Editor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.TablesTabControl.ResumeLayout(false);
+            this.OrdersPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();
+            this.CustomersPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CustomersGridView)).EndInit();
+            this.ProductsPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ProductsGridView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -189,6 +270,12 @@
         private System.Windows.Forms.Button DeleteRecordButton;
         private System.Windows.Forms.Button EditRecordButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TabPage OrdersPage;
+        private System.Windows.Forms.TabPage CustomersPage;
+        private System.Windows.Forms.TabPage ProductsPage;
+        private System.Windows.Forms.DataGridView OrdersGridView;
+        private System.Windows.Forms.DataGridView CustomersGridView;
+        private System.Windows.Forms.DataGridView ProductsGridView;
     }
 }
 

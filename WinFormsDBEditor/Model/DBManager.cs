@@ -19,43 +19,75 @@ namespace WinFormsDBEditor.Model {
         private OrdersTableAdapter ordersAdapter;
         private Order_DetailsTableAdapter orderDetailsAdapter;
         private NwindTypedDS theSet;
+        private TableAdapterManager masterAdapter;
 
         public DBManager() {
+            createConnection();
             createDataAdaptersAndDataSet();
             fillDataSet();
+        }
+
+        private void createConnection() {
+            connection = new OleDbConnection(@"PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=..\..\Nwind.mdb");
         }
 
         private void createDataAdaptersAndDataSet() {
             theSet = new NwindTypedDS();
             customersAdapter = new CustomersTableAdapter();
+            customersAdapter.Connection = connection;
             productsAdapter = new ProductsTableAdapter();
+            productsAdapter.Connection = connection;
             ordersAdapter = new OrdersTableAdapter();
+            ordersAdapter.Connection = connection;
             orderDetailsAdapter = new Order_DetailsTableAdapter();
+            orderDetailsAdapter.Connection = connection;
+            masterAdapter = new TableAdapterManager();
+            masterAdapter.Connection = connection;
         }
 
         private void fillDataSet() {
             customersAdapter.Fill(theSet.Customers);
             productsAdapter.Fill(theSet.Products);
+
             ordersAdapter.Fill(theSet.Orders);
+            ordersAdapter.ClearBeforeFill = false;
+            ordersAdapter.InitEvents();
+
             orderDetailsAdapter.Fill(theSet.Order_Details);
+
+            masterAdapter.CustomersTableAdapter = customersAdapter;
+            masterAdapter.ProductsTableAdapter = productsAdapter;
+            masterAdapter.OrdersTableAdapter = ordersAdapter;
+            masterAdapter.Order_DetailsTableAdapter = orderDetailsAdapter;
+        }
+
+        public void UpdateOrdersTableDataset() {
+            ordersAdapter.Fill(theSet.Orders);
+        }
+
+        public TableAdapterManager getMasterAdapter() {
+            return masterAdapter;
         }
 
         public NwindTypedDS getTheSet() {
             return theSet;
         }
 
-        public DataView getCustomersTable() {
-            return theSet.Customers.DefaultView;
+        public NwindTypedDS.CustomersDataTable getCustomersTable() {
+            return theSet.Customers;
         }
 
-        public DataView getProductsTable() {
-            return theSet.Products.DefaultView;
+        public NwindTypedDS.ProductsDataTable getProductsTable() {
+            return theSet.Products;
         }
 
-        public DataView getOrdersTable() {
-            return theSet.Orders.DefaultView;
+        public NwindTypedDS.OrdersDataTable getOrdersTable() {
+            return theSet.Orders;
         }
 
+
+
+        // methods to be used soon
         public DataView getCustomersFromLondon()
         {
             return new DataView(theSet.Customers, "City = 'London'", "City", DataViewRowState.CurrentRows);
@@ -70,5 +102,8 @@ namespace WinFormsDBEditor.Model {
             
             //theSet.Orders.FindByOrderID(rowNumber)
         }
+
+        //end methods to be used soon
+
     }
 }
