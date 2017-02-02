@@ -72,10 +72,12 @@
             // AddNewOrderButton
             // 
             this.AddNewOrderButton.Location = new System.Drawing.Point(15, 376);
+            this.AddNewOrderButton.MaximumSize = new System.Drawing.Size(257, 23);
+            this.AddNewOrderButton.MinimumSize = new System.Drawing.Size(257, 23);
             this.AddNewOrderButton.Name = "AddNewOrderButton";
             this.AddNewOrderButton.Size = new System.Drawing.Size(257, 23);
             this.AddNewOrderButton.TabIndex = 2;
-            this.AddNewOrderButton.Text = "Dodaj nowy rekord";
+            this.AddNewOrderButton.Text = "Add new record";
             this.AddNewOrderButton.UseVisualStyleBackColor = true;
             this.AddNewOrderButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -306,6 +308,8 @@
             this.Controls.Add(this.AddNewOrderButton);
             this.Controls.Add(this.CustomerIDLabel);
             this.Controls.Add(this.customerIdComboBox);
+            this.MaximumSize = new System.Drawing.Size(300, 450);
+            this.MinimumSize = new System.Drawing.Size(300, 450);
             this.Name = "AddNewOrder";
             this.Text = "Add New Order";
             this.ResumeLayout(false);
