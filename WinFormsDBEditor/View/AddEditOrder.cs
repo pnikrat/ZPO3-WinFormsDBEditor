@@ -23,13 +23,27 @@ namespace WinFormsDBEditor.View {
 
         public AddEditOrder(DBManager modelInstance) {
             InitializeComponent();
-            masterAdapter = modelInstance.getMasterAdapter();
-            theSet = modelInstance.getTheSet();
-            this.modelInstance = modelInstance;
+            InitModels(modelInstance);
+            PrepareBindingSources();
+        }
 
+        public AddEditOrder(NwindTypedDS.OrdersRow editedRow, DBManager modelInstance) {
+            InitializeComponent();
+            InitModels(modelInstance);
+            PrepareBindingSources();
+            AttachEditedRowValues(editedRow);
+        }
+
+        private void InitModels(DBManager model) {
+            masterAdapter = model.getMasterAdapter();
+            theSet = model.getTheSet();
+            this.modelInstance = model;
+        }
+
+        private void PrepareBindingSources() {
             customerIDSource = new BindingSource();
             customerIDSource.DataSource = theSet.Orders.Select(r => new { r.CustomerID }).Distinct();
-            
+
             customerIdComboBox.DataSource = customerIDSource;
             customerIdComboBox.DisplayMember = theSet.Orders.CustomerIDColumn.ColumnName;
             customerIdComboBox.ValueMember = theSet.Orders.CustomerIDColumn.ColumnName;
@@ -47,7 +61,22 @@ namespace WinFormsDBEditor.View {
             ShipViaComboBox.DataSource = shipViaSource;
             ShipViaComboBox.DisplayMember = theSet.Orders.ShipViaColumn.ColumnName;
             ShipViaComboBox.ValueMember = theSet.Orders.ShipViaColumn.ColumnName;
-            
+        }
+
+        private void AttachEditedRowValues(NwindTypedDS.OrdersRow editedRow) {
+            customerIdComboBox.SelectedValue = editedRow.CustomerID;
+            EmployeeIdComboBox.SelectedValue = editedRow.EmployeeID;
+            OrderDatePicker.Value = editedRow.OrderDate;
+            RequiredDatePicker.Value = editedRow.RequiredDate;
+            ShippedDatePicker.Value = editedRow.ShippedDate;
+            ShipViaComboBox.SelectedValue = editedRow.ShipVia;
+            FreightTextBox.Text = editedRow.Freight.ToString();
+            ShipNameTextBox.Text = editedRow.ShipName;
+            ShipAddressTextBox.Text = editedRow.ShipAddress;
+            ShipCityTextBox.Text = editedRow.ShipCity;
+            ShipRegionTextBox.Text = editedRow.ShipRegion;
+            ShipPostalCodeBox.Text = editedRow.ShipPostalCode;
+            ShipCountryTextBox.Text = editedRow.ShipCountry;
         }
 
         protected virtual void OnInsertOccured() {

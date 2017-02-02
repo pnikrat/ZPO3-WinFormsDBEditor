@@ -20,6 +20,7 @@ namespace WinFormsDBEditor.View {
 
         event EventHandler<EventArgs<int>> TabChange;
         event EventHandler NewRecordCommand;
+        event EventHandler<EventArgs<object>> EditRecordCommand;
 
     }
 }

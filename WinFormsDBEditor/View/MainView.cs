@@ -15,6 +15,7 @@ namespace WinFormsDBEditor {
 
         public event EventHandler<EventArgs<int>> TabChange;
         public event EventHandler NewRecordCommand;
+        public event EventHandler<EventArgs<object>> EditRecordCommand;
         private BindingSource ordersSource = new BindingSource();
         private BindingSource customersSource = new BindingSource();
         private BindingSource productsSource = new BindingSource();
@@ -90,15 +91,28 @@ namespace WinFormsDBEditor {
                 eventHandler.Invoke(this, null);
         }
 
+        protected virtual void OnEditRecordCommand(EventArgs<object> args) {
+            var eventHandler = this.EditRecordCommand;
+            if (eventHandler != null)
+                eventHandler.Invoke(this, args);
+        }
+
         private void TablesTabControl_SelectedIndexChanged(object sender, EventArgs e) {
             TabControl control = (TabControl)sender;
             OnTabChange(new EventArgs<int>(control.SelectedIndex));
         }
 
         private void NewRecordButton_Click(object sender, EventArgs e) {
-            OnNewRecordCommand();
+            OnNewRecordCommand();            
         }
 
-
+        private void EditRecordButton_Click(object sender, EventArgs e) {
+            if (TablesTabControl.SelectedIndex == 0)
+                OnEditRecordCommand(new EventArgs<object>(OrdersGridView.CurrentRow.DataBoundItem));
+            else if (TablesTabControl.SelectedIndex == 1)
+                OnEditRecordCommand(new EventArgs<object>(CustomersGridView.CurrentRow.DataBoundItem));
+            else if (TablesTabControl.SelectedIndex == 2)
+                OnEditRecordCommand(new EventArgs<object>(ProductsGridView.CurrentRow.DataBoundItem));
+        }
     }
 }

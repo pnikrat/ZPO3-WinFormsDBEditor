@@ -29,6 +29,7 @@ namespace WinFormsDBEditor.Presenter {
         private void SubscribeToFormEvents() {
             _view.TabChange += this.TabChange;
             _view.NewRecordCommand += this.NewRecordCommand;
+            _view.EditRecordCommand += this.EditRecordCommand;
         }
 
         private void DataControlInitialization()
@@ -63,6 +64,14 @@ namespace WinFormsDBEditor.Presenter {
                 form.Show();
             }
 
+        }
+
+        private void EditRecordCommand(object sender, EventArgs<object> args) {
+            DataRowView rowView = (DataRowView)args.value;
+            if (currentTab == 0) {
+                AddEditOrder form = new AddEditOrder((NwindTypedDS.OrdersRow)rowView.Row, _data);
+                form.Show();
+            }
         }
 
         private void UpdateOrdersTable(object sender, EventArgs args) {

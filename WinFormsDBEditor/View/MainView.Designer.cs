@@ -210,6 +210,7 @@
             this.EditRecordButton.TabIndex = 1;
             this.EditRecordButton.Text = "button1";
             this.EditRecordButton.UseVisualStyleBackColor = true;
+            this.EditRecordButton.Click += new System.EventHandler(this.EditRecordButton_Click);
             // 
             // DeleteRecordButton
             // 
