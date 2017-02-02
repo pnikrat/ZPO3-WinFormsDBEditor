@@ -101,7 +101,7 @@
             // OrderDateLabel
             // 
             this.OrderDateLabel.AutoSize = true;
-            this.OrderDateLabel.Location = new System.Drawing.Point(12, 73);
+            this.OrderDateLabel.Location = new System.Drawing.Point(12, 66);
             this.OrderDateLabel.Name = "OrderDateLabel";
             this.OrderDateLabel.Size = new System.Drawing.Size(56, 13);
             this.OrderDateLabel.TabIndex = 5;
@@ -117,7 +117,7 @@
             // RequiredDateLabel
             // 
             this.RequiredDateLabel.AutoSize = true;
-            this.RequiredDateLabel.Location = new System.Drawing.Point(12, 98);
+            this.RequiredDateLabel.Location = new System.Drawing.Point(12, 92);
             this.RequiredDateLabel.Name = "RequiredDateLabel";
             this.RequiredDateLabel.Size = new System.Drawing.Size(73, 13);
             this.RequiredDateLabel.TabIndex = 7;
@@ -133,7 +133,7 @@
             // ShippedDateLabel
             // 
             this.ShippedDateLabel.AutoSize = true;
-            this.ShippedDateLabel.Location = new System.Drawing.Point(12, 124);
+            this.ShippedDateLabel.Location = new System.Drawing.Point(12, 118);
             this.ShippedDateLabel.Name = "ShippedDateLabel";
             this.ShippedDateLabel.Size = new System.Drawing.Size(69, 13);
             this.ShippedDateLabel.TabIndex = 9;
