@@ -27,9 +27,9 @@ namespace WinFormsDBEditor.View {
 
             customerIDSource = new BindingSource(theSet, theSet.Orders.TableName);
 
-            comboBox1.DataSource = customerIDSource;
-            comboBox1.DisplayMember = theSet.Orders.CustomerIDColumn.ColumnName;
-            comboBox1.ValueMember = theSet.Orders.CustomerIDColumn.ColumnName;
+            customerIdComboBox.DataSource = customerIDSource;
+            customerIdComboBox.DisplayMember = theSet.Orders.CustomerIDColumn.ColumnName;
+            customerIdComboBox.ValueMember = theSet.Orders.CustomerIDColumn.ColumnName;
             
         }
 
@@ -41,7 +41,7 @@ namespace WinFormsDBEditor.View {
 
         private void button1_Click(object sender, EventArgs e) {
             NwindTypedDS.OrdersRow newRow = theSet.Orders.NewOrdersRow();
-            newRow.CustomerID = (string)comboBox1.SelectedValue;
+            newRow.CustomerID = (string)customerIdComboBox.SelectedValue;
             newRow.EmployeeID = 9;
             newRow.OrderDate = new DateTime(2000, 1, 10);
             newRow.RequiredDate = new DateTime(2001, 1, 10);
