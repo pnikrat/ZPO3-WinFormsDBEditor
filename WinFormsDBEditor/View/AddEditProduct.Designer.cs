@@ -25,21 +25,21 @@
         private void InitializeComponent() {
             this.ProductNameLabel = new System.Windows.Forms.Label();
             this.ProductNameTextBox = new System.Windows.Forms.TextBox();
-            this.SupplierIdLabel = new System.Windows.Forms.Label();
-            this.SupplierIdComboBox = new System.Windows.Forms.ComboBox();
-            this.CategoryIdLabel = new System.Windows.Forms.Label();
-            this.CategoryIdComboBox = new System.Windows.Forms.ComboBox();
+            this.SupplierIDLabel = new System.Windows.Forms.Label();
+            this.SupplierIDComboBox = new System.Windows.Forms.ComboBox();
+            this.CategoryIDLabel = new System.Windows.Forms.Label();
+            this.CategoryIDComboBox = new System.Windows.Forms.ComboBox();
             this.QuantityPerUnitLabel = new System.Windows.Forms.Label();
             this.QuantityPerUnitTextBox = new System.Windows.Forms.TextBox();
             this.UnitPriceLabel = new System.Windows.Forms.Label();
             this.UnitPriceTextBox = new System.Windows.Forms.TextBox();
-            this.UnitInStockLabel = new System.Windows.Forms.Label();
-            this.UnitInStockTextBox = new System.Windows.Forms.TextBox();
+            this.UnitsInStockLabel = new System.Windows.Forms.Label();
+            this.UnitsInStockTextBox = new System.Windows.Forms.TextBox();
             this.UnitsOnOrderLabel = new System.Windows.Forms.Label();
             this.UnitsOnOrderTextBox = new System.Windows.Forms.TextBox();
             this.ReorderLevelLabel = new System.Windows.Forms.Label();
             this.ReorderLevelTextBox = new System.Windows.Forms.TextBox();
-            this.DiscountedCheckbox = new System.Windows.Forms.CheckBox();
+            this.DiscontinuedCheckbox = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -59,39 +59,39 @@
             this.ProductNameTextBox.Size = new System.Drawing.Size(142, 20);
             this.ProductNameTextBox.TabIndex = 1;
             // 
-            // SupplierIdLabel
+            // SupplierIDLabel
             // 
-            this.SupplierIdLabel.AutoSize = true;
-            this.SupplierIdLabel.Location = new System.Drawing.Point(12, 41);
-            this.SupplierIdLabel.Name = "SupplierIdLabel";
-            this.SupplierIdLabel.Size = new System.Drawing.Size(54, 13);
-            this.SupplierIdLabel.TabIndex = 2;
-            this.SupplierIdLabel.Text = "SupplierId";
+            this.SupplierIDLabel.AutoSize = true;
+            this.SupplierIDLabel.Location = new System.Drawing.Point(12, 41);
+            this.SupplierIDLabel.Name = "SupplierIDLabel";
+            this.SupplierIDLabel.Size = new System.Drawing.Size(56, 13);
+            this.SupplierIDLabel.TabIndex = 2;
+            this.SupplierIDLabel.Text = "SupplierID";
             // 
-            // SupplierIdComboBox
+            // SupplierIDComboBox
             // 
-            this.SupplierIdComboBox.FormattingEnabled = true;
-            this.SupplierIdComboBox.Location = new System.Drawing.Point(130, 38);
-            this.SupplierIdComboBox.Name = "SupplierIdComboBox";
-            this.SupplierIdComboBox.Size = new System.Drawing.Size(142, 21);
-            this.SupplierIdComboBox.TabIndex = 3;
+            this.SupplierIDComboBox.FormattingEnabled = true;
+            this.SupplierIDComboBox.Location = new System.Drawing.Point(130, 38);
+            this.SupplierIDComboBox.Name = "SupplierIDComboBox";
+            this.SupplierIDComboBox.Size = new System.Drawing.Size(142, 21);
+            this.SupplierIDComboBox.TabIndex = 3;
             // 
-            // CategoryIdLabel
+            // CategoryIDLabel
             // 
-            this.CategoryIdLabel.AutoSize = true;
-            this.CategoryIdLabel.Location = new System.Drawing.Point(12, 68);
-            this.CategoryIdLabel.Name = "CategoryIdLabel";
-            this.CategoryIdLabel.Size = new System.Drawing.Size(58, 13);
-            this.CategoryIdLabel.TabIndex = 4;
-            this.CategoryIdLabel.Text = "CategoryId";
+            this.CategoryIDLabel.AutoSize = true;
+            this.CategoryIDLabel.Location = new System.Drawing.Point(12, 68);
+            this.CategoryIDLabel.Name = "CategoryIDLabel";
+            this.CategoryIDLabel.Size = new System.Drawing.Size(60, 13);
+            this.CategoryIDLabel.TabIndex = 4;
+            this.CategoryIDLabel.Text = "CategoryID";
             // 
-            // CategoryIdComboBox
+            // CategoryIDComboBox
             // 
-            this.CategoryIdComboBox.FormattingEnabled = true;
-            this.CategoryIdComboBox.Location = new System.Drawing.Point(130, 65);
-            this.CategoryIdComboBox.Name = "CategoryIdComboBox";
-            this.CategoryIdComboBox.Size = new System.Drawing.Size(142, 21);
-            this.CategoryIdComboBox.TabIndex = 5;
+            this.CategoryIDComboBox.FormattingEnabled = true;
+            this.CategoryIDComboBox.Location = new System.Drawing.Point(130, 65);
+            this.CategoryIDComboBox.Name = "CategoryIDComboBox";
+            this.CategoryIDComboBox.Size = new System.Drawing.Size(142, 21);
+            this.CategoryIDComboBox.TabIndex = 5;
             // 
             // QuantityPerUnitLabel
             // 
@@ -125,21 +125,21 @@
             this.UnitPriceTextBox.Size = new System.Drawing.Size(142, 20);
             this.UnitPriceTextBox.TabIndex = 9;
             // 
-            // UnitInStockLabel
+            // UnitsInStockLabel
             // 
-            this.UnitInStockLabel.AutoSize = true;
-            this.UnitInStockLabel.Location = new System.Drawing.Point(12, 147);
-            this.UnitInStockLabel.Name = "UnitInStockLabel";
-            this.UnitInStockLabel.Size = new System.Drawing.Size(63, 13);
-            this.UnitInStockLabel.TabIndex = 10;
-            this.UnitInStockLabel.Text = "UnitInStock";
+            this.UnitsInStockLabel.AutoSize = true;
+            this.UnitsInStockLabel.Location = new System.Drawing.Point(12, 147);
+            this.UnitsInStockLabel.Name = "UnitsInStockLabel";
+            this.UnitsInStockLabel.Size = new System.Drawing.Size(68, 13);
+            this.UnitsInStockLabel.TabIndex = 10;
+            this.UnitsInStockLabel.Text = "UnitsInStock";
             // 
-            // UnitInStockTextBox
+            // UnitsInStockTextBox
             // 
-            this.UnitInStockTextBox.Location = new System.Drawing.Point(130, 144);
-            this.UnitInStockTextBox.Name = "UnitInStockTextBox";
-            this.UnitInStockTextBox.Size = new System.Drawing.Size(142, 20);
-            this.UnitInStockTextBox.TabIndex = 11;
+            this.UnitsInStockTextBox.Location = new System.Drawing.Point(130, 144);
+            this.UnitsInStockTextBox.Name = "UnitsInStockTextBox";
+            this.UnitsInStockTextBox.Size = new System.Drawing.Size(142, 20);
+            this.UnitsInStockTextBox.TabIndex = 11;
             // 
             // UnitsOnOrderLabel
             // 
@@ -173,15 +173,15 @@
             this.ReorderLevelTextBox.Size = new System.Drawing.Size(142, 20);
             this.ReorderLevelTextBox.TabIndex = 15;
             // 
-            // DiscountedCheckbox
+            // DiscontinuedCheckbox
             // 
-            this.DiscountedCheckbox.AutoSize = true;
-            this.DiscountedCheckbox.Location = new System.Drawing.Point(15, 228);
-            this.DiscountedCheckbox.Name = "DiscountedCheckbox";
-            this.DiscountedCheckbox.Size = new System.Drawing.Size(90, 17);
-            this.DiscountedCheckbox.TabIndex = 16;
-            this.DiscountedCheckbox.Text = "is Discounted";
-            this.DiscountedCheckbox.UseVisualStyleBackColor = true;
+            this.DiscontinuedCheckbox.AutoSize = true;
+            this.DiscontinuedCheckbox.Location = new System.Drawing.Point(15, 228);
+            this.DiscontinuedCheckbox.Name = "DiscontinuedCheckbox";
+            this.DiscontinuedCheckbox.Size = new System.Drawing.Size(88, 17);
+            this.DiscontinuedCheckbox.TabIndex = 16;
+            this.DiscontinuedCheckbox.Text = "Discontinued";
+            this.DiscontinuedCheckbox.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -198,21 +198,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 314);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.DiscountedCheckbox);
+            this.Controls.Add(this.DiscontinuedCheckbox);
             this.Controls.Add(this.ReorderLevelTextBox);
             this.Controls.Add(this.ReorderLevelLabel);
             this.Controls.Add(this.UnitsOnOrderTextBox);
             this.Controls.Add(this.UnitsOnOrderLabel);
-            this.Controls.Add(this.UnitInStockTextBox);
-            this.Controls.Add(this.UnitInStockLabel);
+            this.Controls.Add(this.UnitsInStockTextBox);
+            this.Controls.Add(this.UnitsInStockLabel);
             this.Controls.Add(this.UnitPriceTextBox);
             this.Controls.Add(this.UnitPriceLabel);
             this.Controls.Add(this.QuantityPerUnitTextBox);
             this.Controls.Add(this.QuantityPerUnitLabel);
-            this.Controls.Add(this.CategoryIdComboBox);
-            this.Controls.Add(this.CategoryIdLabel);
-            this.Controls.Add(this.SupplierIdComboBox);
-            this.Controls.Add(this.SupplierIdLabel);
+            this.Controls.Add(this.CategoryIDComboBox);
+            this.Controls.Add(this.CategoryIDLabel);
+            this.Controls.Add(this.SupplierIDComboBox);
+            this.Controls.Add(this.SupplierIDLabel);
             this.Controls.Add(this.ProductNameTextBox);
             this.Controls.Add(this.ProductNameLabel);
             this.MaximumSize = new System.Drawing.Size(300, 353);
@@ -228,21 +228,21 @@
 
         private System.Windows.Forms.Label ProductNameLabel;
         private System.Windows.Forms.TextBox ProductNameTextBox;
-        private System.Windows.Forms.Label SupplierIdLabel;
-        private System.Windows.Forms.ComboBox SupplierIdComboBox;
-        private System.Windows.Forms.Label CategoryIdLabel;
-        private System.Windows.Forms.ComboBox CategoryIdComboBox;
+        private System.Windows.Forms.Label SupplierIDLabel;
+        private System.Windows.Forms.ComboBox SupplierIDComboBox;
+        private System.Windows.Forms.Label CategoryIDLabel;
+        private System.Windows.Forms.ComboBox CategoryIDComboBox;
         private System.Windows.Forms.Label QuantityPerUnitLabel;
         private System.Windows.Forms.TextBox QuantityPerUnitTextBox;
         private System.Windows.Forms.Label UnitPriceLabel;
         private System.Windows.Forms.TextBox UnitPriceTextBox;
-        private System.Windows.Forms.Label UnitInStockLabel;
-        private System.Windows.Forms.TextBox UnitInStockTextBox;
+        private System.Windows.Forms.Label UnitsInStockLabel;
+        private System.Windows.Forms.TextBox UnitsInStockTextBox;
         private System.Windows.Forms.Label UnitsOnOrderLabel;
         private System.Windows.Forms.TextBox UnitsOnOrderTextBox;
         private System.Windows.Forms.Label ReorderLevelLabel;
         private System.Windows.Forms.TextBox ReorderLevelTextBox;
-        private System.Windows.Forms.CheckBox DiscountedCheckbox;
+        private System.Windows.Forms.CheckBox DiscontinuedCheckbox;
         private System.Windows.Forms.Button button1;
     }
 }
