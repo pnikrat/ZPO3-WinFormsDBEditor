@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using WinFormsDBEditor.Model;
 
 namespace WinFormsDBEditor.View {
-    public partial class AddNewOrder : Form, IAddNewOrder {
+    public partial class AddEditOrder : Form, IAddEditOrder {
 
         NwindTypedDSTableAdapters.TableAdapterManager masterAdapter;
         NwindTypedDS theSet;
@@ -19,7 +19,7 @@ namespace WinFormsDBEditor.View {
         DBManager modelInstance;
         BindingSource customerIDSource;
 
-        public AddNewOrder(DBManager modelInstance) {
+        public AddEditOrder(DBManager modelInstance) {
             InitializeComponent();
             masterAdapter = modelInstance.getMasterAdapter();
             theSet = modelInstance.getTheSet();
@@ -42,18 +42,18 @@ namespace WinFormsDBEditor.View {
         private void button1_Click(object sender, EventArgs e) {
             NwindTypedDS.OrdersRow newRow = theSet.Orders.NewOrdersRow();
             newRow.CustomerID = (string)customerIdComboBox.SelectedValue;
-            newRow.EmployeeID = 9;
-            newRow.OrderDate = new DateTime(2000, 1, 10);
-            newRow.RequiredDate = new DateTime(2001, 1, 10);
-            newRow.ShippedDate = new DateTime(2003, 12, 6);
-            newRow.ShipVia = 2;
+            newRow.EmployeeID = (int)EmployeeIdComboBox.SelectedValue;
+            newRow.OrderDate = OrderDatePicker.Value;
+            newRow.RequiredDate = RequiredDatePicker.Value;
+            newRow.ShippedDate = ShippedDatePicker.Value;
+            newRow.ShipVia = (int)ShipViaComboBox.SelectedValue;
             newRow.Freight = 12;
-            newRow.ShipName = "test";
-            newRow.ShipAddress = "asdf";
-            newRow.ShipCity = "augard";
-            newRow.ShipRegion = "far";
-            newRow.ShipPostalCode = "234-54";
-            newRow.ShipCountry = "Berlioo";
+            newRow.ShipName = ShipNameTextBox.Text;
+            newRow.ShipAddress = ShipAddressTextBox.Text;
+            newRow.ShipCity = ShipCityTextBox.Text;
+            newRow.ShipRegion = ShipRegionTextBox.Text;
+            newRow.ShipPostalCode = ShipPostalCodeBox.Text;
+            newRow.ShipCountry = ShipCountryTextBox.Text;
             theSet.Orders.Rows.Add(newRow);
 
             customerIDSource.EndEdit();

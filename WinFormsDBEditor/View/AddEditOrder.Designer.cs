@@ -1,5 +1,5 @@
 ﻿namespace WinFormsDBEditor.View {
-    partial class AddNewOrder {
+    partial class AddEditOrder {
         /// <summary>
         /// Required designer variable.
         /// </summary>

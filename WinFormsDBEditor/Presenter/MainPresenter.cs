@@ -11,7 +11,9 @@ namespace WinFormsDBEditor.Presenter {
     class MainPresenter 
     {
         private readonly IMainView _view;
-        private IAddNewOrder _popup;
+        private IAddEditOrder _popupOrder;
+        private IAddEditCustomer _popupCustomer;
+        private IAddEditProduct _popupProduct;
         private DBManager _data;
         //private int currentRowNumber;
         private int currentTab;
@@ -42,14 +44,37 @@ namespace WinFormsDBEditor.Presenter {
         }
 
         private void NewRecordCommand(object sender, EventArgs args) {
-            AddNewOrder form = new AddNewOrder(_data);
-            _popup = (IAddNewOrder)form;
-            _popup.insertOccured += this.UpdateOrdersTable;
-            form.Show();
+            if (currentTab == 0) {
+                AddEditOrder form = new AddEditOrder(_data);
+                _popupOrder = (IAddEditOrder)form;
+                _popupOrder.insertOccured += this.UpdateOrdersTable;
+                form.Show();
+            }
+            else if (currentTab == 1) {
+                AddEditCustomer form = new AddEditCustomer(_data);
+                _popupCustomer = (IAddEditCustomer)form;
+                _popupCustomer.insertOccured += this.UpdateCustomersTable;
+                form.Show();
+            }
+            else if (currentTab == 2) {
+                AddEditProduct form = new AddEditProduct(_data);
+                _popupProduct = (IAddEditProduct)form;
+                _popupProduct.insertOccured += this.UpdateProductsTable;
+                form.Show();
+            }
+
         }
 
         private void UpdateOrdersTable(object sender, EventArgs args) {
             _view.UpdateOrdersTable();
+        }
+
+        private void UpdateCustomersTable(object sender, EventArgs args) {
+            _view.UpdateCustomersTable();
+        }
+
+        private void UpdateProductsTable(object sender, EventArgs args) {
+            _view.UpdateProductsTable();
         }
     }
 }

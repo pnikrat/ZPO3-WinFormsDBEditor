@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WinFormsDBEditor.View {
-    public interface IAddNewOrder {
+    public interface IAddEditOrder {
         event EventHandler insertOccured;
 
     }

@@ -26,7 +26,7 @@ namespace WinFormsDBEditor {
 
         private void InitializeView() {
             TablesTabControl.SizeMode = TabSizeMode.Fixed;
-            NewRecordButton.Text = "New order...";
+            NewRecordButton.Text = "New record...";
             EditRecordButton.Text = "Edit record...";
             DeleteRecordButton.Text = "Delete record";
             FilterButton.Text = "Filter results...";
@@ -65,9 +65,17 @@ namespace WinFormsDBEditor {
             CustomersGridView.DataSource = customersSource;
         }
 
+        public void UpdateCustomersTable() {
+            customersSource.ResetBindings(false);
+        }
+
         public void AcceptProductsTable(NwindTypedDS.ProductsDataTable _data) {
             productsSource.DataSource = _data;
             ProductsGridView.DataSource = productsSource;
+        }
+
+        public void UpdateProductsTable() {
+            productsSource.ResetBindings(false);
         }
 
         protected virtual void OnTabChange(EventArgs<int> args) {
@@ -90,5 +98,7 @@ namespace WinFormsDBEditor {
         private void NewRecordButton_Click(object sender, EventArgs e) {
             OnNewRecordCommand();
         }
+
+
     }
 }

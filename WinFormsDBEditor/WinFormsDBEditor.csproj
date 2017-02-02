@@ -57,11 +57,11 @@
     </Compile>
     <Compile Include="Presenter\EventArgs.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
-    <Compile Include="View\AddEditClient.cs">
+    <Compile Include="View\AddEditCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AddEditClient.Designer.cs">
-      <DependentUpon>AddEditClient.cs</DependentUpon>
+    <Compile Include="View\AddEditCustomer.Designer.cs">
+      <DependentUpon>AddEditCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AddEditProduct.cs">
       <SubType>Form</SubType>
@@ -69,13 +69,15 @@
     <Compile Include="View\AddEditProduct.Designer.cs">
       <DependentUpon>AddEditProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AddNewOrder.cs">
+    <Compile Include="View\AddEditOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AddNewOrder.Designer.cs">
-      <DependentUpon>AddNewOrder.cs</DependentUpon>
+    <Compile Include="View\AddEditOrder.Designer.cs">
+      <DependentUpon>AddEditOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\IAddNewOrder.cs" />
+    <Compile Include="View\IAddEditCustomer.cs" />
+    <Compile Include="View\IAddEditOrder.cs" />
+    <Compile Include="View\IAddEditProduct.cs" />
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
@@ -94,14 +96,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\AddEditClient.resx">
-      <DependentUpon>AddEditClient.cs</DependentUpon>
+    <EmbeddedResource Include="View\AddEditCustomer.resx">
+      <DependentUpon>AddEditCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AddEditProduct.resx">
       <DependentUpon>AddEditProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AddNewOrder.resx">
-      <DependentUpon>AddNewOrder.cs</DependentUpon>
+    <EmbeddedResource Include="View\AddEditOrder.resx">
+      <DependentUpon>AddEditOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

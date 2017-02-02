@@ -1,5 +1,5 @@
 ﻿namespace WinFormsDBEditor.View {
-    partial class AddEditClient {
+    partial class AddEditCustomer {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -236,7 +236,7 @@
             this.PostalCodeBox.Size = new System.Drawing.Size(142, 20);
             this.PostalCodeBox.TabIndex = 45;
             // 
-            // AddEditClient
+            // AddEditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -266,8 +266,8 @@
             this.Controls.Add(this.CustomerIDLabel);
             this.MaximumSize = new System.Drawing.Size(300, 393);
             this.MinimumSize = new System.Drawing.Size(300, 393);
-            this.Name = "AddEditClient";
-            this.Text = "AddEditClient";
+            this.Name = "AddEditCustomer";
+            this.Text = "AddEditCustomer";
             this.ResumeLayout(false);
             this.PerformLayout();
 

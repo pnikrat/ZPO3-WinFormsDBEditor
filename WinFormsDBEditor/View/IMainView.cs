@@ -15,6 +15,8 @@ namespace WinFormsDBEditor.View {
         void AcceptCustomersTable(NwindTypedDS.CustomersDataTable _data);
         void AcceptOrdersTable(NwindTypedDS.OrdersDataTable _data);
         void UpdateOrdersTable();
+        void UpdateCustomersTable();
+        void UpdateProductsTable();
 
         event EventHandler<EventArgs<int>> TabChange;
         event EventHandler NewRecordCommand;
