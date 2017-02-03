@@ -73,6 +73,10 @@ namespace WinFormsDBEditor.Presenter {
                 AddEditOrder form = new AddEditOrder((NwindTypedDS.OrdersRow)rowView.Row, _data);
                 form.Show();
             }
+            else if (currentTab == 1) {
+                AddEditCustomer form = new AddEditCustomer((NwindTypedDS.CustomersRow)rowView.Row, _data);
+                form.Show();
+            }
         }
 
         private void DeleteRecordCommand(object sender, EventArgs<object> args) {

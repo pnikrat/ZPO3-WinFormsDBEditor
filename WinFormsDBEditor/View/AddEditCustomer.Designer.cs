@@ -23,7 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button1 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.AddNewCustomerButton = new System.Windows.Forms.Button();
             this.PostalCodeLabel = new System.Windows.Forms.Label();
             this.RegionTextBox = new System.Windows.Forms.TextBox();
             this.RegionLabel = new System.Windows.Forms.Label();
@@ -45,17 +46,20 @@
             this.CustomerIDComboBox = new System.Windows.Forms.ComboBox();
             this.CompanyNameTextBox = new System.Windows.Forms.TextBox();
             this.ContactNameTextBox = new System.Windows.Forms.TextBox();
-            this.PostalCodeBox = new System.Windows.Forms.MaskedTextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.PostalCodeTextBox = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // AddNewCustomerButton
             // 
-            this.button1.Location = new System.Drawing.Point(15, 319);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(257, 23);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Add new record";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddNewCustomerButton.Location = new System.Drawing.Point(15, 319);
+            this.AddNewCustomerButton.Name = "AddNewCustomerButton";
+            this.AddNewCustomerButton.Size = new System.Drawing.Size(257, 23);
+            this.AddNewCustomerButton.TabIndex = 11;
+            this.AddNewCustomerButton.Text = "Add new record";
+            this.AddNewCustomerButton.UseVisualStyleBackColor = true;
+            this.AddNewCustomerButton.Click += new System.EventHandler(this.AddNewCustomerButton_Click);
             // 
             // PostalCodeLabel
             // 
@@ -71,7 +75,7 @@
             this.RegionTextBox.Location = new System.Drawing.Point(130, 170);
             this.RegionTextBox.Name = "RegionTextBox";
             this.RegionTextBox.Size = new System.Drawing.Size(142, 20);
-            this.RegionTextBox.TabIndex = 31;
+            this.RegionTextBox.TabIndex = 6;
             // 
             // RegionLabel
             // 
@@ -87,7 +91,7 @@
             this.CityTextBox.Location = new System.Drawing.Point(130, 144);
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.Size = new System.Drawing.Size(142, 20);
-            this.CityTextBox.TabIndex = 29;
+            this.CityTextBox.TabIndex = 5;
             // 
             // CityLabel
             // 
@@ -103,7 +107,7 @@
             this.AddressTextBox.Location = new System.Drawing.Point(130, 118);
             this.AddressTextBox.Name = "AddressTextBox";
             this.AddressTextBox.Size = new System.Drawing.Size(142, 20);
-            this.AddressTextBox.TabIndex = 27;
+            this.AddressTextBox.TabIndex = 4;
             // 
             // AddressLabel
             // 
@@ -119,7 +123,7 @@
             this.ContactTitleTextBox.Location = new System.Drawing.Point(130, 92);
             this.ContactTitleTextBox.Name = "ContactTitleTextBox";
             this.ContactTitleTextBox.Size = new System.Drawing.Size(142, 20);
-            this.ContactTitleTextBox.TabIndex = 25;
+            this.ContactTitleTextBox.TabIndex = 3;
             // 
             // ContactTitleLabel
             // 
@@ -171,7 +175,7 @@
             this.CountryTextBox.Location = new System.Drawing.Point(130, 222);
             this.CountryTextBox.Name = "CountryTextBox";
             this.CountryTextBox.Size = new System.Drawing.Size(142, 20);
-            this.CountryTextBox.TabIndex = 37;
+            this.CountryTextBox.TabIndex = 8;
             // 
             // PhoneLabel
             // 
@@ -188,7 +192,7 @@
             this.PhoneBox.Mask = "(999) 000-0000";
             this.PhoneBox.Name = "PhoneBox";
             this.PhoneBox.Size = new System.Drawing.Size(142, 20);
-            this.PhoneBox.TabIndex = 39;
+            this.PhoneBox.TabIndex = 9;
             // 
             // FaxLabel
             // 
@@ -205,7 +209,7 @@
             this.FaxBox.Mask = "(999) 000-0000";
             this.FaxBox.Name = "FaxBox";
             this.FaxBox.Size = new System.Drawing.Size(142, 20);
-            this.FaxBox.TabIndex = 41;
+            this.FaxBox.TabIndex = 10;
             // 
             // CustomerIDComboBox
             // 
@@ -213,35 +217,39 @@
             this.CustomerIDComboBox.Location = new System.Drawing.Point(130, 11);
             this.CustomerIDComboBox.Name = "CustomerIDComboBox";
             this.CustomerIDComboBox.Size = new System.Drawing.Size(142, 21);
-            this.CustomerIDComboBox.TabIndex = 42;
+            this.CustomerIDComboBox.TabIndex = 0;
             // 
             // CompanyNameTextBox
             // 
             this.CompanyNameTextBox.Location = new System.Drawing.Point(130, 40);
             this.CompanyNameTextBox.Name = "CompanyNameTextBox";
             this.CompanyNameTextBox.Size = new System.Drawing.Size(142, 20);
-            this.CompanyNameTextBox.TabIndex = 43;
+            this.CompanyNameTextBox.TabIndex = 1;
             // 
             // ContactNameTextBox
             // 
             this.ContactNameTextBox.Location = new System.Drawing.Point(130, 66);
             this.ContactNameTextBox.Name = "ContactNameTextBox";
             this.ContactNameTextBox.Size = new System.Drawing.Size(142, 20);
-            this.ContactNameTextBox.TabIndex = 44;
+            this.ContactNameTextBox.TabIndex = 2;
             // 
-            // PostalCodeBox
+            // errorProvider1
             // 
-            this.PostalCodeBox.Location = new System.Drawing.Point(130, 196);
-            this.PostalCodeBox.Name = "PostalCodeBox";
-            this.PostalCodeBox.Size = new System.Drawing.Size(142, 20);
-            this.PostalCodeBox.TabIndex = 45;
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // PostalCodeTextBox
+            // 
+            this.PostalCodeTextBox.Location = new System.Drawing.Point(130, 196);
+            this.PostalCodeTextBox.Name = "PostalCodeTextBox";
+            this.PostalCodeTextBox.Size = new System.Drawing.Size(142, 20);
+            this.PostalCodeTextBox.TabIndex = 7;
             // 
             // AddEditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 354);
-            this.Controls.Add(this.PostalCodeBox);
+            this.ClientSize = new System.Drawing.Size(294, 354);
+            this.Controls.Add(this.PostalCodeTextBox);
             this.Controls.Add(this.ContactNameTextBox);
             this.Controls.Add(this.CompanyNameTextBox);
             this.Controls.Add(this.CustomerIDComboBox);
@@ -251,7 +259,7 @@
             this.Controls.Add(this.PhoneLabel);
             this.Controls.Add(this.CountryTextBox);
             this.Controls.Add(this.CountryLabel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AddNewCustomerButton);
             this.Controls.Add(this.PostalCodeLabel);
             this.Controls.Add(this.RegionTextBox);
             this.Controls.Add(this.RegionLabel);
@@ -264,10 +272,11 @@
             this.Controls.Add(this.ContactNameLabel);
             this.Controls.Add(this.CompanyNameLabel);
             this.Controls.Add(this.CustomerIDLabel);
-            this.MaximumSize = new System.Drawing.Size(300, 393);
-            this.MinimumSize = new System.Drawing.Size(300, 393);
+            this.MaximumSize = new System.Drawing.Size(310, 393);
+            this.MinimumSize = new System.Drawing.Size(310, 393);
             this.Name = "AddEditCustomer";
-            this.Text = "AddEditCustomer";
+            this.Text = "Add New Customer";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,7 +284,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddNewCustomerButton;
         private System.Windows.Forms.Label PostalCodeLabel;
         private System.Windows.Forms.TextBox RegionTextBox;
         private System.Windows.Forms.Label RegionLabel;
@@ -297,6 +306,7 @@
         private System.Windows.Forms.ComboBox CustomerIDComboBox;
         private System.Windows.Forms.TextBox CompanyNameTextBox;
         private System.Windows.Forms.TextBox ContactNameTextBox;
-        private System.Windows.Forms.MaskedTextBox PostalCodeBox;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox PostalCodeTextBox;
     }
 }
