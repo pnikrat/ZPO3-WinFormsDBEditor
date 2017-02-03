@@ -222,6 +222,7 @@
             this.DeleteRecordButton.TabIndex = 2;
             this.DeleteRecordButton.Text = "button1";
             this.DeleteRecordButton.UseVisualStyleBackColor = true;
+            this.DeleteRecordButton.Click += new System.EventHandler(this.DeleteRecordButton_Click);
             // 
             // FilterButton
             // 

@@ -30,6 +30,7 @@ namespace WinFormsDBEditor.Presenter {
             _view.TabChange += this.TabChange;
             _view.NewRecordCommand += this.NewRecordCommand;
             _view.EditRecordCommand += this.EditRecordCommand;
+            _view.DeleteRecordCommand += this.DeleteRecordCommand;
         }
 
         private void DataControlInitialization()
@@ -71,6 +72,17 @@ namespace WinFormsDBEditor.Presenter {
             if (currentTab == 0) {
                 AddEditOrder form = new AddEditOrder((NwindTypedDS.OrdersRow)rowView.Row, _data);
                 form.Show();
+            }
+        }
+
+        private void DeleteRecordCommand(object sender, EventArgs<object> args) {
+            DataRowView rowView = (DataRowView)args.value;
+            if (currentTab == 0) {
+                NwindTypedDS.OrdersRow theRow = (NwindTypedDS.OrdersRow)rowView.Row;
+                theRow.Delete();
+                _data.getMasterAdapter().UpdateAll(_data.getTheSet());
+                _data.UpdateOrdersTableDataset();
+                UpdateOrdersTable(this, null);
             }
         }
 
