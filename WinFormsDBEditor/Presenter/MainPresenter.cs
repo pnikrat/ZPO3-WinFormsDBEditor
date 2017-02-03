@@ -80,9 +80,33 @@ namespace WinFormsDBEditor.Presenter {
             if (currentTab == 0) {
                 NwindTypedDS.OrdersRow theRow = (NwindTypedDS.OrdersRow)rowView.Row;
                 theRow.Delete();
-                _data.getMasterAdapter().UpdateAll(_data.getTheSet());
+
+                _data.getMasterAdapter().Order_DetailsTableAdapter.Update(_data.getTheSet().Order_Details);
+                _data.getMasterAdapter().OrdersTableAdapter.Update(_data.getTheSet().Orders);
+
+                //_data.getMasterAdapter().UpdateAll(_data.getTheSet());
                 _data.UpdateOrdersTableDataset();
                 UpdateOrdersTable(this, null);
+            }
+            else if (currentTab == 1) {
+                NwindTypedDS.CustomersRow theRow = (NwindTypedDS.CustomersRow)rowView.Row;
+                theRow.Delete();
+                _data.getMasterAdapter().OrdersTableAdapter.Update(_data.getTheSet().Orders);
+                _data.getMasterAdapter().CustomersTableAdapter.Update(_data.getTheSet().Customers);
+                
+                _data.UpdateCustomersTableDataset();
+                UpdateCustomersTable(this, null);
+            }
+            else if (currentTab == 2) {
+                NwindTypedDS.ProductsRow theRow = (NwindTypedDS.ProductsRow)rowView.Row;
+                theRow.Delete();
+
+                _data.getMasterAdapter().Order_DetailsTableAdapter.Update(_data.getTheSet().Order_Details);
+                _data.getMasterAdapter().ProductsTableAdapter.Update(_data.getTheSet().Products);
+
+                //_data.getMasterAdapter().UpdateAll(_data.getTheSet());
+                _data.UpdateProductsTableDataset();
+                UpdateProductsTable(this, null);
             }
         }
 

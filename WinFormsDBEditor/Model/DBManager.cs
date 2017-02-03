@@ -47,7 +47,10 @@ namespace WinFormsDBEditor.Model {
 
         private void fillDataSet() {
             customersAdapter.Fill(theSet.Customers);
+            customersAdapter.ClearBeforeFill = false;
+
             productsAdapter.Fill(theSet.Products);
+            productsAdapter.ClearBeforeFill = false;
 
             ordersAdapter.Fill(theSet.Orders);
             ordersAdapter.ClearBeforeFill = false;
@@ -63,6 +66,14 @@ namespace WinFormsDBEditor.Model {
 
         public void UpdateOrdersTableDataset() {
             ordersAdapter.Fill(theSet.Orders);
+        }
+
+        public void UpdateCustomersTableDataset() {
+            customersAdapter.Fill(theSet.Customers);
+        }
+
+        public void UpdateProductsTableDataset() {
+            productsAdapter.Fill(theSet.Products);
         }
 
         public TableAdapterManager getMasterAdapter() {
