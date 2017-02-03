@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.customerIdComboBox = new System.Windows.Forms.ComboBox();
             this.CustomerIDLabel = new System.Windows.Forms.Label();
             this.AddNewOrderButton = new System.Windows.Forms.Button();
@@ -47,13 +48,16 @@
             this.ShipRegionLabel = new System.Windows.Forms.Label();
             this.ShipRegionTextBox = new System.Windows.Forms.TextBox();
             this.ShipPostalCodeLabel = new System.Windows.Forms.Label();
-            this.ShipPostalCodeBox = new System.Windows.Forms.MaskedTextBox();
             this.ShipCountryLabel = new System.Windows.Forms.Label();
             this.ShipCountryTextBox = new System.Windows.Forms.TextBox();
+            this.ShipPostalCodeTextBox = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // customerIdComboBox
             // 
+            this.customerIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerIdComboBox.FormattingEnabled = true;
             this.customerIdComboBox.Location = new System.Drawing.Point(130, 12);
             this.customerIdComboBox.Name = "customerIdComboBox";
@@ -76,7 +80,7 @@
             this.AddNewOrderButton.MinimumSize = new System.Drawing.Size(257, 23);
             this.AddNewOrderButton.Name = "AddNewOrderButton";
             this.AddNewOrderButton.Size = new System.Drawing.Size(257, 23);
-            this.AddNewOrderButton.TabIndex = 2;
+            this.AddNewOrderButton.TabIndex = 13;
             this.AddNewOrderButton.Text = "Add new record";
             this.AddNewOrderButton.UseVisualStyleBackColor = true;
             this.AddNewOrderButton.Click += new System.EventHandler(this.button1_Click);
@@ -92,11 +96,12 @@
             // 
             // EmployeeIdComboBox
             // 
+            this.EmployeeIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EmployeeIdComboBox.FormattingEnabled = true;
             this.EmployeeIdComboBox.Location = new System.Drawing.Point(130, 39);
             this.EmployeeIdComboBox.Name = "EmployeeIdComboBox";
             this.EmployeeIdComboBox.Size = new System.Drawing.Size(142, 21);
-            this.EmployeeIdComboBox.TabIndex = 4;
+            this.EmployeeIdComboBox.TabIndex = 1;
             // 
             // OrderDateLabel
             // 
@@ -112,7 +117,7 @@
             this.OrderDatePicker.Location = new System.Drawing.Point(130, 66);
             this.OrderDatePicker.Name = "OrderDatePicker";
             this.OrderDatePicker.Size = new System.Drawing.Size(142, 20);
-            this.OrderDatePicker.TabIndex = 6;
+            this.OrderDatePicker.TabIndex = 2;
             // 
             // RequiredDateLabel
             // 
@@ -128,7 +133,7 @@
             this.ShippedDatePicker.Location = new System.Drawing.Point(130, 118);
             this.ShippedDatePicker.Name = "ShippedDatePicker";
             this.ShippedDatePicker.Size = new System.Drawing.Size(142, 20);
-            this.ShippedDatePicker.TabIndex = 8;
+            this.ShippedDatePicker.TabIndex = 4;
             // 
             // ShippedDateLabel
             // 
@@ -144,7 +149,7 @@
             this.RequiredDatePicker.Location = new System.Drawing.Point(130, 92);
             this.RequiredDatePicker.Name = "RequiredDatePicker";
             this.RequiredDatePicker.Size = new System.Drawing.Size(142, 20);
-            this.RequiredDatePicker.TabIndex = 10;
+            this.RequiredDatePicker.TabIndex = 3;
             // 
             // ShipViaLabel
             // 
@@ -157,11 +162,12 @@
             // 
             // ShipViaComboBox
             // 
+            this.ShipViaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ShipViaComboBox.FormattingEnabled = true;
             this.ShipViaComboBox.Location = new System.Drawing.Point(130, 144);
             this.ShipViaComboBox.Name = "ShipViaComboBox";
             this.ShipViaComboBox.Size = new System.Drawing.Size(142, 21);
-            this.ShipViaComboBox.TabIndex = 12;
+            this.ShipViaComboBox.TabIndex = 5;
             // 
             // FreightLabel
             // 
@@ -177,7 +183,8 @@
             this.FreightTextBox.Location = new System.Drawing.Point(130, 171);
             this.FreightTextBox.Name = "FreightTextBox";
             this.FreightTextBox.Size = new System.Drawing.Size(142, 20);
-            this.FreightTextBox.TabIndex = 14;
+            this.FreightTextBox.TabIndex = 6;
+            this.FreightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FreightTextBox_KeyPress);
             // 
             // ShipNameLabel
             // 
@@ -193,7 +200,7 @@
             this.ShipNameTextBox.Location = new System.Drawing.Point(130, 197);
             this.ShipNameTextBox.Name = "ShipNameTextBox";
             this.ShipNameTextBox.Size = new System.Drawing.Size(142, 20);
-            this.ShipNameTextBox.TabIndex = 16;
+            this.ShipNameTextBox.TabIndex = 7;
             // 
             // ShipAddressLabel
             // 
@@ -209,7 +216,7 @@
             this.ShipAddressTextBox.Location = new System.Drawing.Point(130, 221);
             this.ShipAddressTextBox.Name = "ShipAddressTextBox";
             this.ShipAddressTextBox.Size = new System.Drawing.Size(142, 20);
-            this.ShipAddressTextBox.TabIndex = 18;
+            this.ShipAddressTextBox.TabIndex = 8;
             // 
             // ShipCityLabel
             // 
@@ -225,7 +232,7 @@
             this.ShipCityTextBox.Location = new System.Drawing.Point(130, 247);
             this.ShipCityTextBox.Name = "ShipCityTextBox";
             this.ShipCityTextBox.Size = new System.Drawing.Size(142, 20);
-            this.ShipCityTextBox.TabIndex = 20;
+            this.ShipCityTextBox.TabIndex = 9;
             // 
             // ShipRegionLabel
             // 
@@ -241,7 +248,7 @@
             this.ShipRegionTextBox.Location = new System.Drawing.Point(130, 273);
             this.ShipRegionTextBox.Name = "ShipRegionTextBox";
             this.ShipRegionTextBox.Size = new System.Drawing.Size(142, 20);
-            this.ShipRegionTextBox.TabIndex = 22;
+            this.ShipRegionTextBox.TabIndex = 10;
             // 
             // ShipPostalCodeLabel
             // 
@@ -251,14 +258,6 @@
             this.ShipPostalCodeLabel.Size = new System.Drawing.Size(82, 13);
             this.ShipPostalCodeLabel.TabIndex = 23;
             this.ShipPostalCodeLabel.Text = "ShipPostalCode";
-            // 
-            // ShipPostalCodeBox
-            // 
-            this.ShipPostalCodeBox.Location = new System.Drawing.Point(130, 299);
-            this.ShipPostalCodeBox.Mask = "00-000";
-            this.ShipPostalCodeBox.Name = "ShipPostalCodeBox";
-            this.ShipPostalCodeBox.Size = new System.Drawing.Size(142, 20);
-            this.ShipPostalCodeBox.TabIndex = 24;
             // 
             // ShipCountryLabel
             // 
@@ -274,16 +273,27 @@
             this.ShipCountryTextBox.Location = new System.Drawing.Point(130, 325);
             this.ShipCountryTextBox.Name = "ShipCountryTextBox";
             this.ShipCountryTextBox.Size = new System.Drawing.Size(142, 20);
-            this.ShipCountryTextBox.TabIndex = 26;
+            this.ShipCountryTextBox.TabIndex = 12;
             // 
-            // AddNewOrder
+            // ShipPostalCodeTextBox
+            // 
+            this.ShipPostalCodeTextBox.Location = new System.Drawing.Point(130, 299);
+            this.ShipPostalCodeTextBox.Name = "ShipPostalCodeTextBox";
+            this.ShipPostalCodeTextBox.Size = new System.Drawing.Size(142, 20);
+            this.ShipPostalCodeTextBox.TabIndex = 11;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // AddEditOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 411);
+            this.ClientSize = new System.Drawing.Size(294, 411);
+            this.Controls.Add(this.ShipPostalCodeTextBox);
             this.Controls.Add(this.ShipCountryTextBox);
             this.Controls.Add(this.ShipCountryLabel);
-            this.Controls.Add(this.ShipPostalCodeBox);
             this.Controls.Add(this.ShipPostalCodeLabel);
             this.Controls.Add(this.ShipRegionTextBox);
             this.Controls.Add(this.ShipRegionLabel);
@@ -308,10 +318,11 @@
             this.Controls.Add(this.AddNewOrderButton);
             this.Controls.Add(this.CustomerIDLabel);
             this.Controls.Add(this.customerIdComboBox);
-            this.MaximumSize = new System.Drawing.Size(300, 450);
-            this.MinimumSize = new System.Drawing.Size(300, 450);
-            this.Name = "AddNewOrder";
+            this.MaximumSize = new System.Drawing.Size(310, 450);
+            this.MinimumSize = new System.Drawing.Size(310, 450);
+            this.Name = "AddEditOrder";
             this.Text = "Add New Order";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,8 +354,9 @@
         private System.Windows.Forms.Label ShipRegionLabel;
         private System.Windows.Forms.TextBox ShipRegionTextBox;
         private System.Windows.Forms.Label ShipPostalCodeLabel;
-        private System.Windows.Forms.MaskedTextBox ShipPostalCodeBox;
         private System.Windows.Forms.Label ShipCountryLabel;
         private System.Windows.Forms.TextBox ShipCountryTextBox;
+        private System.Windows.Forms.TextBox ShipPostalCodeTextBox;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

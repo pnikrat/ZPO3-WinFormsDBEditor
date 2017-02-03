@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +18,18 @@ namespace WinFormsDBEditor.View {
         NwindTypedDS theSet;
         public event EventHandler insertOccured;
         DBManager modelInstance;
+        NwindTypedDS.OrdersRow theRow;
+        bool isNew;
         BindingSource customerIDSource;
         BindingSource employeeIDSource;
         BindingSource shipViaSource;
+        char decimalChar = Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
 
         public AddEditOrder(DBManager modelInstance) {
             InitializeComponent();
             InitModels(modelInstance);
             PrepareBindingSources();
+            theRow = null;
         }
 
         public AddEditOrder(NwindTypedDS.OrdersRow editedRow, DBManager modelInstance) {
@@ -32,6 +37,10 @@ namespace WinFormsDBEditor.View {
             InitModels(modelInstance);
             PrepareBindingSources();
             AttachEditedRowValues(editedRow);
+            theRow = editedRow;
+
+            AddNewOrderButton.Text = "Edit order";
+            this.Text = "Edit order";
         }
 
         private void InitModels(DBManager model) {
@@ -64,19 +73,21 @@ namespace WinFormsDBEditor.View {
         }
 
         private void AttachEditedRowValues(NwindTypedDS.OrdersRow editedRow) {
+            
             customerIdComboBox.SelectedValue = editedRow.CustomerID;
             EmployeeIdComboBox.SelectedValue = editedRow.EmployeeID;
             OrderDatePicker.Value = editedRow.OrderDate;
             RequiredDatePicker.Value = editedRow.RequiredDate;
-            ShippedDatePicker.Value = editedRow.ShippedDate;
+            ShippedDatePicker.Value = (editedRow.IsShippedDateNull()) ? DateTime.Now.Date : editedRow.ShippedDate;
             ShipViaComboBox.SelectedValue = editedRow.ShipVia;
             FreightTextBox.Text = editedRow.Freight.ToString();
             ShipNameTextBox.Text = editedRow.ShipName;
             ShipAddressTextBox.Text = editedRow.ShipAddress;
-            ShipCityTextBox.Text = editedRow.ShipCity;
-            ShipRegionTextBox.Text = editedRow.ShipRegion;
-            ShipPostalCodeBox.Text = editedRow.ShipPostalCode;
+            ShipCityTextBox.Text = editedRow.ShipCity;          
+            ShipRegionTextBox.Text = (editedRow.IsShipRegionNull()) ? string.Empty : editedRow.ShipRegion;
+            ShipPostalCodeTextBox.Text = (editedRow.IsShipPostalCodeNull()) ? string.Empty : editedRow.ShipPostalCode;
             ShipCountryTextBox.Text = editedRow.ShipCountry;
+
         }
 
         protected virtual void OnInsertOccured() {
@@ -86,21 +97,28 @@ namespace WinFormsDBEditor.View {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            NwindTypedDS.OrdersRow newRow = theSet.Orders.NewOrdersRow();
-            newRow.CustomerID = (string)customerIdComboBox.SelectedValue;
-            newRow.EmployeeID = (int)EmployeeIdComboBox.SelectedValue;
-            newRow.OrderDate = OrderDatePicker.Value.Date;
-            newRow.RequiredDate = RequiredDatePicker.Value.Date;
-            newRow.ShippedDate = ShippedDatePicker.Value.Date;
-            newRow.ShipVia = (int)ShipViaComboBox.SelectedValue;
-            newRow.Freight = decimal.Parse(FreightTextBox.Text);
-            newRow.ShipName = ShipNameTextBox.Text;
-            newRow.ShipAddress = ShipAddressTextBox.Text;
-            newRow.ShipCity = ShipCityTextBox.Text;
-            newRow.ShipRegion = ShipRegionTextBox.Text;
-            newRow.ShipPostalCode = ShipPostalCodeBox.Text;
-            newRow.ShipCountry = ShipCountryTextBox.Text;
-            theSet.Orders.Rows.Add(newRow);
+            ClearErrors();
+            if (!UserInputValidation())
+                return;
+            if (theRow == null) {
+                theRow = theSet.Orders.NewOrdersRow();
+                isNew = true;
+            }
+            theRow.CustomerID = (string)customerIdComboBox.SelectedValue;
+            theRow.EmployeeID = (int)EmployeeIdComboBox.SelectedValue;
+            theRow.OrderDate = OrderDatePicker.Value.Date;
+            theRow.RequiredDate = RequiredDatePicker.Value.Date;
+            theRow.ShippedDate = ShippedDatePicker.Value.Date;
+            theRow.ShipVia = (int)ShipViaComboBox.SelectedValue;
+            theRow.Freight = decimal.Parse(FreightTextBox.Text);
+            theRow.ShipName = ShipNameTextBox.Text;
+            theRow.ShipAddress = ShipAddressTextBox.Text;
+            theRow.ShipCity = ShipCityTextBox.Text;
+            theRow.ShipRegion = ShipRegionTextBox.Text;
+            theRow.ShipPostalCode = ShipPostalCodeTextBox.Text;
+            theRow.ShipCountry = ShipCountryTextBox.Text;
+            if (isNew)
+                theSet.Orders.Rows.Add(theRow);
 
             customerIDSource.EndEdit();
             employeeIDSource.EndEdit();
@@ -109,6 +127,36 @@ namespace WinFormsDBEditor.View {
             int result = masterAdapter.UpdateAll(theSet);
             modelInstance.UpdateOrdersTableDataset();
             OnInsertOccured();
+            this.Close();
+        }
+
+        private bool UserInputValidation() {
+            var boxes = Controls.OfType<TextBox>();
+
+            foreach (var box in boxes) {
+                if (string.IsNullOrWhiteSpace(box.Text)) {
+                    errorProvider1.SetError(box, "Please fill the required field");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void ClearErrors() {
+            errorProvider1.Clear();
+        }
+
+        private void FreightTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != decimalChar)) {
+                e.Handled = true;
+                return;
+            }
+
+            // checks to make sure only 1 decimal is allowed
+            if (e.KeyChar == decimalChar) {
+                if ((sender as TextBox).Text.IndexOf(e.KeyChar) != -1)
+                    e.Handled = true;
+            }
         }
     }
 }
