@@ -28,7 +28,7 @@ namespace WinFormsDBEditor.Model {
         }
 
         private void createConnection() {
-            connection = new OleDbConnection(@"PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=..\..\Nwind.mdb");
+            connection = new OleDbConnection(@"PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=|DataDirectory|\Nwind.mdb");
         }
 
         private void createDataAdaptersAndDataSet() {
