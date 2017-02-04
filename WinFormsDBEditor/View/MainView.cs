@@ -32,7 +32,6 @@ namespace WinFormsDBEditor {
             NewRecordButton.Text = "New record...";
             EditRecordButton.Text = "Edit record...";
             DeleteRecordButton.Text = "Delete record";
-            FilterButton.Text = "Filter results...";
             StatusLabel.Text = "Data loaded";
             InitializeGridView();
         }

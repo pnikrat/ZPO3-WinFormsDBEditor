@@ -37,7 +37,6 @@
             this.NewRecordButton = new System.Windows.Forms.Button();
             this.EditRecordButton = new System.Windows.Forms.Button();
             this.DeleteRecordButton = new System.Windows.Forms.Button();
-            this.FilterButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.TablesTabControl.SuspendLayout();
             this.OrdersPage.SuspendLayout();
@@ -179,7 +178,6 @@
             this.flowLayoutPanel1.Controls.Add(this.NewRecordButton);
             this.flowLayoutPanel1.Controls.Add(this.EditRecordButton);
             this.flowLayoutPanel1.Controls.Add(this.DeleteRecordButton);
-            this.flowLayoutPanel1.Controls.Add(this.FilterButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -224,17 +222,6 @@
             this.DeleteRecordButton.UseVisualStyleBackColor = true;
             this.DeleteRecordButton.Click += new System.EventHandler(this.DeleteRecordButton_Click);
             // 
-            // FilterButton
-            // 
-            this.FilterButton.AutoSize = true;
-            this.FilterButton.Location = new System.Drawing.Point(229, 10);
-            this.FilterButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.FilterButton.Name = "FilterButton";
-            this.FilterButton.Size = new System.Drawing.Size(53, 23);
-            this.FilterButton.TabIndex = 3;
-            this.FilterButton.Text = "button1";
-            this.FilterButton.UseVisualStyleBackColor = true;
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,7 +255,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Button NewRecordButton;
-        private System.Windows.Forms.Button FilterButton;
         private System.Windows.Forms.Button DeleteRecordButton;
         private System.Windows.Forms.Button EditRecordButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
