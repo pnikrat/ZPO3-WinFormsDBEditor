@@ -50,6 +50,7 @@ namespace WinFormsDBEditor {
             gridViewToStyle.AllowUserToResizeColumns = false;
             gridViewToStyle.AllowUserToResizeRows = false;
             gridViewToStyle.AllowUserToAddRows = false;
+            gridViewToStyle.ReadOnly = true;
             gridViewToStyle.BackgroundColor = SystemColors.Window;
             gridViewToStyle.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
         }

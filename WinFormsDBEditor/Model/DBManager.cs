@@ -51,6 +51,7 @@ namespace WinFormsDBEditor.Model {
 
             productsAdapter.Fill(theSet.Products);
             productsAdapter.ClearBeforeFill = false;
+            productsAdapter.InitEvents();
 
             ordersAdapter.Fill(theSet.Orders);
             ordersAdapter.ClearBeforeFill = false;

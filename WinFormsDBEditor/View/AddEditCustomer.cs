@@ -45,7 +45,7 @@ namespace WinFormsDBEditor.View {
         }
 
         private void PrepareBindingSources() {
-            customerIDSource.DataSource = theSet.Customers.Select(r => new { r.CustomerID }).Distinct();
+            customerIDSource.DataSource = theSet.Customers.Select(r => new { r.CustomerID }).Distinct().OrderBy(x => x.CustomerID);
 
             CustomerIDComboBox.DataSource = customerIDSource;
             CustomerIDComboBox.DisplayMember = theSet.Customers.CustomerIDColumn.ColumnName;

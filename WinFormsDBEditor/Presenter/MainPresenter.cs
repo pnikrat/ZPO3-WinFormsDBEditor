@@ -77,6 +77,10 @@ namespace WinFormsDBEditor.Presenter {
                 AddEditCustomer form = new AddEditCustomer((NwindTypedDS.CustomersRow)rowView.Row, _data);
                 form.Show();
             }
+            else if (currentTab == 2) {
+                AddEditProduct form = new AddEditProduct((NwindTypedDS.ProductsRow)rowView.Row, _data);
+                form.Show();
+            }
         }
 
         private void DeleteRecordCommand(object sender, EventArgs<object> args) {
@@ -88,7 +92,6 @@ namespace WinFormsDBEditor.Presenter {
                 _data.getMasterAdapter().Order_DetailsTableAdapter.Update(_data.getTheSet().Order_Details);
                 _data.getMasterAdapter().OrdersTableAdapter.Update(_data.getTheSet().Orders);
 
-                //_data.getMasterAdapter().UpdateAll(_data.getTheSet());
                 _data.UpdateOrdersTableDataset();
                 UpdateOrdersTable(this, null);
             }
@@ -108,7 +111,6 @@ namespace WinFormsDBEditor.Presenter {
                 _data.getMasterAdapter().Order_DetailsTableAdapter.Update(_data.getTheSet().Order_Details);
                 _data.getMasterAdapter().ProductsTableAdapter.Update(_data.getTheSet().Products);
 
-                //_data.getMasterAdapter().UpdateAll(_data.getTheSet());
                 _data.UpdateProductsTableDataset();
                 UpdateProductsTable(this, null);
             }

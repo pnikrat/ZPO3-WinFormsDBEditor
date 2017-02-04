@@ -51,21 +51,21 @@ namespace WinFormsDBEditor.View {
 
         private void PrepareBindingSources() {
             customerIDSource = new BindingSource();
-            customerIDSource.DataSource = theSet.Orders.Select(r => new { r.CustomerID }).Distinct();
+            customerIDSource.DataSource = theSet.Orders.Select(r => new { r.CustomerID }).Distinct().OrderBy(x => x.CustomerID);
 
             customerIdComboBox.DataSource = customerIDSource;
             customerIdComboBox.DisplayMember = theSet.Orders.CustomerIDColumn.ColumnName;
             customerIdComboBox.ValueMember = theSet.Orders.CustomerIDColumn.ColumnName;
 
             employeeIDSource = new BindingSource();
-            employeeIDSource.DataSource = theSet.Orders.Select(r => new { r.EmployeeID }).Distinct();
+            employeeIDSource.DataSource = theSet.Orders.Select(r => new { r.EmployeeID }).Distinct().OrderBy(x => x.EmployeeID);
 
             EmployeeIdComboBox.DataSource = employeeIDSource;
             EmployeeIdComboBox.DisplayMember = theSet.Orders.EmployeeIDColumn.ColumnName;
             EmployeeIdComboBox.ValueMember = theSet.Orders.EmployeeIDColumn.ColumnName;
 
             shipViaSource = new BindingSource();
-            shipViaSource.DataSource = theSet.Orders.Select(r => new { r.ShipVia }).Distinct();
+            shipViaSource.DataSource = theSet.Orders.Select(r => new { r.ShipVia }).Distinct().OrderBy(x => x.ShipVia);
 
             ShipViaComboBox.DataSource = shipViaSource;
             ShipViaComboBox.DisplayMember = theSet.Orders.ShipViaColumn.ColumnName;

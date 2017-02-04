@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.ProductNameLabel = new System.Windows.Forms.Label();
             this.ProductNameTextBox = new System.Windows.Forms.TextBox();
             this.SupplierIDLabel = new System.Windows.Forms.Label();
@@ -40,7 +41,9 @@
             this.ReorderLevelLabel = new System.Windows.Forms.Label();
             this.ReorderLevelTextBox = new System.Windows.Forms.TextBox();
             this.DiscontinuedCheckbox = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AddNewProductButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductNameLabel
@@ -70,11 +73,12 @@
             // 
             // SupplierIDComboBox
             // 
+            this.SupplierIDComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SupplierIDComboBox.FormattingEnabled = true;
             this.SupplierIDComboBox.Location = new System.Drawing.Point(130, 38);
             this.SupplierIDComboBox.Name = "SupplierIDComboBox";
             this.SupplierIDComboBox.Size = new System.Drawing.Size(142, 21);
-            this.SupplierIDComboBox.TabIndex = 3;
+            this.SupplierIDComboBox.TabIndex = 2;
             // 
             // CategoryIDLabel
             // 
@@ -87,11 +91,12 @@
             // 
             // CategoryIDComboBox
             // 
+            this.CategoryIDComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryIDComboBox.FormattingEnabled = true;
             this.CategoryIDComboBox.Location = new System.Drawing.Point(130, 65);
             this.CategoryIDComboBox.Name = "CategoryIDComboBox";
             this.CategoryIDComboBox.Size = new System.Drawing.Size(142, 21);
-            this.CategoryIDComboBox.TabIndex = 5;
+            this.CategoryIDComboBox.TabIndex = 3;
             // 
             // QuantityPerUnitLabel
             // 
@@ -107,7 +112,7 @@
             this.QuantityPerUnitTextBox.Location = new System.Drawing.Point(130, 92);
             this.QuantityPerUnitTextBox.Name = "QuantityPerUnitTextBox";
             this.QuantityPerUnitTextBox.Size = new System.Drawing.Size(142, 20);
-            this.QuantityPerUnitTextBox.TabIndex = 7;
+            this.QuantityPerUnitTextBox.TabIndex = 4;
             // 
             // UnitPriceLabel
             // 
@@ -123,7 +128,8 @@
             this.UnitPriceTextBox.Location = new System.Drawing.Point(130, 118);
             this.UnitPriceTextBox.Name = "UnitPriceTextBox";
             this.UnitPriceTextBox.Size = new System.Drawing.Size(142, 20);
-            this.UnitPriceTextBox.TabIndex = 9;
+            this.UnitPriceTextBox.TabIndex = 5;
+            this.UnitPriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UnitPriceTextBox_KeyPress);
             // 
             // UnitsInStockLabel
             // 
@@ -139,7 +145,8 @@
             this.UnitsInStockTextBox.Location = new System.Drawing.Point(130, 144);
             this.UnitsInStockTextBox.Name = "UnitsInStockTextBox";
             this.UnitsInStockTextBox.Size = new System.Drawing.Size(142, 20);
-            this.UnitsInStockTextBox.TabIndex = 11;
+            this.UnitsInStockTextBox.TabIndex = 6;
+            this.UnitsInStockTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UnitsInStockTextBox_KeyPress);
             // 
             // UnitsOnOrderLabel
             // 
@@ -155,7 +162,8 @@
             this.UnitsOnOrderTextBox.Location = new System.Drawing.Point(130, 170);
             this.UnitsOnOrderTextBox.Name = "UnitsOnOrderTextBox";
             this.UnitsOnOrderTextBox.Size = new System.Drawing.Size(142, 20);
-            this.UnitsOnOrderTextBox.TabIndex = 13;
+            this.UnitsOnOrderTextBox.TabIndex = 7;
+            this.UnitsOnOrderTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UnitsOnOrderTextBox_KeyPress);
             // 
             // ReorderLevelLabel
             // 
@@ -171,7 +179,8 @@
             this.ReorderLevelTextBox.Location = new System.Drawing.Point(130, 196);
             this.ReorderLevelTextBox.Name = "ReorderLevelTextBox";
             this.ReorderLevelTextBox.Size = new System.Drawing.Size(142, 20);
-            this.ReorderLevelTextBox.TabIndex = 15;
+            this.ReorderLevelTextBox.TabIndex = 8;
+            this.ReorderLevelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ReorderLevelTextBox_KeyPress);
             // 
             // DiscontinuedCheckbox
             // 
@@ -179,25 +188,30 @@
             this.DiscontinuedCheckbox.Location = new System.Drawing.Point(15, 228);
             this.DiscontinuedCheckbox.Name = "DiscontinuedCheckbox";
             this.DiscontinuedCheckbox.Size = new System.Drawing.Size(88, 17);
-            this.DiscontinuedCheckbox.TabIndex = 16;
+            this.DiscontinuedCheckbox.TabIndex = 9;
             this.DiscontinuedCheckbox.Text = "Discontinued";
             this.DiscontinuedCheckbox.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // AddNewProductButton
             // 
-            this.button1.Location = new System.Drawing.Point(15, 279);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(257, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Add new record";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddNewProductButton.Location = new System.Drawing.Point(15, 279);
+            this.AddNewProductButton.Name = "AddNewProductButton";
+            this.AddNewProductButton.Size = new System.Drawing.Size(257, 23);
+            this.AddNewProductButton.TabIndex = 10;
+            this.AddNewProductButton.Text = "Add new record";
+            this.AddNewProductButton.UseVisualStyleBackColor = true;
+            this.AddNewProductButton.Click += new System.EventHandler(this.AddNewProductButton_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddEditProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 314);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(294, 314);
+            this.Controls.Add(this.AddNewProductButton);
             this.Controls.Add(this.DiscontinuedCheckbox);
             this.Controls.Add(this.ReorderLevelTextBox);
             this.Controls.Add(this.ReorderLevelLabel);
@@ -215,10 +229,11 @@
             this.Controls.Add(this.SupplierIDLabel);
             this.Controls.Add(this.ProductNameTextBox);
             this.Controls.Add(this.ProductNameLabel);
-            this.MaximumSize = new System.Drawing.Size(300, 353);
-            this.MinimumSize = new System.Drawing.Size(300, 353);
+            this.MaximumSize = new System.Drawing.Size(310, 353);
+            this.MinimumSize = new System.Drawing.Size(310, 353);
             this.Name = "AddEditProduct";
             this.Text = "Add New Product";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,6 +258,7 @@
         private System.Windows.Forms.Label ReorderLevelLabel;
         private System.Windows.Forms.TextBox ReorderLevelTextBox;
         private System.Windows.Forms.CheckBox DiscontinuedCheckbox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddNewProductButton;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
