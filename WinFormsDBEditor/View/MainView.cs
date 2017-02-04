@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,6 +54,10 @@ namespace WinFormsDBEditor {
             gridViewToStyle.ReadOnly = true;
             gridViewToStyle.BackgroundColor = SystemColors.Window;
             gridViewToStyle.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+            Type gridViewType = gridViewToStyle.GetType();
+            PropertyInfo pi = gridViewType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(gridViewToStyle, true, null);
         }
 
         public void AcceptOrdersTable(NwindTypedDS.OrdersDataTable _data) {
