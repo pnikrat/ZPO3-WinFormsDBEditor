@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using WinFormsDBEditor.Model;
 
 namespace WinFormsDBEditor.View {
-    public partial class AddEditProduct : Form, IAddEditProduct {
+    public partial class AddEditProduct : Form, IAddEditEntity {
 
         NwindTypedDSTableAdapters.TableAdapterManager masterAdapter;
         NwindTypedDS theSet;

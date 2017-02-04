@@ -10,8 +10,7 @@ using System.Windows.Forms;
 using WinFormsDBEditor.Model;
 
 namespace WinFormsDBEditor.View {
-    public partial class AddEditCustomer : Form, IAddEditCustomer {
-
+    public partial class AddEditCustomer : Form, IAddEditEntity {
         NwindTypedDSTableAdapters.TableAdapterManager masterAdapter;
         NwindTypedDS theSet;
         public event EventHandler insertOccured;

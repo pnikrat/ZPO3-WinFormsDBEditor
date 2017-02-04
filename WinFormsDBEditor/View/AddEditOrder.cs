@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using WinFormsDBEditor.Model;
 
 namespace WinFormsDBEditor.View {
-    public partial class AddEditOrder : Form, IAddEditOrder {
+    public partial class AddEditOrder : Form, IAddEditEntity {
 
         NwindTypedDSTableAdapters.TableAdapterManager masterAdapter;
         NwindTypedDS theSet;

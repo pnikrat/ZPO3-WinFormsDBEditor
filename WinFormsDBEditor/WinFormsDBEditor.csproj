@@ -50,7 +50,7 @@
     <Compile Include="NwindTypedDS.cs">
       <DependentUpon>NwindTypedDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="NwindTypedDS.Designer.cs">
+    <Compile Include="NwindTypedDS2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NwindTypedDS.xsd</DependentUpon>
@@ -75,9 +75,7 @@
     <Compile Include="View\AddEditOrder.Designer.cs">
       <DependentUpon>AddEditOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\IAddEditCustomer.cs" />
-    <Compile Include="View\IAddEditOrder.cs" />
-    <Compile Include="View\IAddEditProduct.cs" />
+    <Compile Include="View\IAddEditEntity.cs" />
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>

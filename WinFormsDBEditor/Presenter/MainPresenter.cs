@@ -11,9 +11,9 @@ namespace WinFormsDBEditor.Presenter {
     class MainPresenter 
     {
         private readonly IMainView _view;
-        private IAddEditOrder _popupOrder;
-        private IAddEditCustomer _popupCustomer;
-        private IAddEditProduct _popupProduct;
+        private IAddEditEntity _popupOrder;
+        private IAddEditEntity _popupCustomer;
+        private IAddEditEntity _popupProduct;
         private DBManager _data;
         //private int currentRowNumber;
         private int currentTab;
@@ -48,19 +48,19 @@ namespace WinFormsDBEditor.Presenter {
         private void NewRecordCommand(object sender, EventArgs args) {
             if (currentTab == 0) {
                 AddEditOrder form = new AddEditOrder(_data);
-                _popupOrder = (IAddEditOrder)form;
+                _popupOrder = (IAddEditEntity)form;
                 _popupOrder.insertOccured += this.UpdateOrdersTable;
                 form.Show();
             }
             else if (currentTab == 1) {
                 AddEditCustomer form = new AddEditCustomer(_data);
-                _popupCustomer = (IAddEditCustomer)form;
+                _popupCustomer = (IAddEditEntity)form;
                 _popupCustomer.insertOccured += this.UpdateCustomersTable;
                 form.Show();
             }
             else if (currentTab == 2) {
                 AddEditProduct form = new AddEditProduct(_data);
-                _popupProduct = (IAddEditProduct)form;
+                _popupProduct = (IAddEditEntity)form;
                 _popupProduct.insertOccured += this.UpdateProductsTable;
                 form.Show();
             }
