@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsDBEditor.Model;
+using WinFormsDBEditor.Presenter;
 
 namespace WinFormsDBEditor.View {
     public partial class AddEditProduct : Form, IAddEditEntity {
 
         NwindTypedDSTableAdapters.TableAdapterManager masterAdapter;
         NwindTypedDS theSet;
-        public event EventHandler insertOccured;
+        public event EventHandler<EventArgs<OperationStatus>> insertOccured;
         DBManager modelInstance;
         NwindTypedDS.ProductsRow theRow;
         bool isNew;
@@ -75,10 +76,10 @@ namespace WinFormsDBEditor.View {
             DiscontinuedCheckbox.Checked = editedRow.Discontinued;
         }
 
-        protected virtual void OnInsertOccured() {
+        protected virtual void OnInsertOccured(OperationStatus args) {
             var eventHandler = this.insertOccured;
             if (eventHandler != null)
-                eventHandler.Invoke(this, null);
+                eventHandler.Invoke(this, new EventArgs<OperationStatus>(args));
         }
 
         private void AddNewProductButton_Click(object sender, EventArgs e) {
@@ -106,7 +107,8 @@ namespace WinFormsDBEditor.View {
 
             int result = masterAdapter.UpdateAll(theSet);
             modelInstance.UpdateProductsTableDataset();
-            OnInsertOccured();
+            OperationStatus status = (isNew) ? OperationStatus.New : OperationStatus.Edited;
+            OnInsertOccured(status);
             this.Close();
         }
 

@@ -70,14 +70,20 @@ namespace WinFormsDBEditor.Presenter {
             DataRowView rowView = (DataRowView)args.value;
             if (currentTab == 0) {
                 AddEditOrder form = new AddEditOrder((NwindTypedDS.OrdersRow)rowView.Row, _data);
+                _popupOrder = (IAddEditEntity)form;
+                _popupOrder.insertOccured += this.UpdateOrdersTable;
                 form.Show();
             }
             else if (currentTab == 1) {
                 AddEditCustomer form = new AddEditCustomer((NwindTypedDS.CustomersRow)rowView.Row, _data);
+                _popupCustomer = (IAddEditEntity)form;
+                _popupCustomer.insertOccured += this.UpdateCustomersTable;
                 form.Show();
             }
             else if (currentTab == 2) {
                 AddEditProduct form = new AddEditProduct((NwindTypedDS.ProductsRow)rowView.Row, _data);
+                _popupProduct = (IAddEditEntity)form;
+                _popupProduct.insertOccured += this.UpdateProductsTable;
                 form.Show();
             }
         }
@@ -92,7 +98,7 @@ namespace WinFormsDBEditor.Presenter {
                 _data.getMasterAdapter().OrdersTableAdapter.Update(_data.getTheSet().Orders);
 
                 _data.UpdateOrdersTableDataset();
-                UpdateOrdersTable(this, null);
+                UpdateOrdersTable(this, new EventArgs<OperationStatus>(OperationStatus.Deleted));
             }
             else if (currentTab == 1) {
                 NwindTypedDS.CustomersRow theRow = (NwindTypedDS.CustomersRow)rowView.Row;
@@ -101,7 +107,7 @@ namespace WinFormsDBEditor.Presenter {
                 _data.getMasterAdapter().CustomersTableAdapter.Update(_data.getTheSet().Customers);
                 
                 _data.UpdateCustomersTableDataset();
-                UpdateCustomersTable(this, null);
+                UpdateCustomersTable(this, new EventArgs<OperationStatus>(OperationStatus.Deleted));
             }
             else if (currentTab == 2) {
                 NwindTypedDS.ProductsRow theRow = (NwindTypedDS.ProductsRow)rowView.Row;
@@ -111,20 +117,23 @@ namespace WinFormsDBEditor.Presenter {
                 _data.getMasterAdapter().ProductsTableAdapter.Update(_data.getTheSet().Products);
 
                 _data.UpdateProductsTableDataset();
-                UpdateProductsTable(this, null);
+                UpdateProductsTable(this, new EventArgs<OperationStatus>(OperationStatus.Deleted));
             }
         }
 
-        private void UpdateOrdersTable(object sender, EventArgs args) {
+        private void UpdateOrdersTable(object sender, EventArgs<OperationStatus> args) {
             _view.UpdateOrdersTable();
+            _view.SetStatusLabel(args.value);
         }
 
-        private void UpdateCustomersTable(object sender, EventArgs args) {
+        private void UpdateCustomersTable(object sender, EventArgs<OperationStatus> args) {
             _view.UpdateCustomersTable();
+            _view.SetStatusLabel(args.value);
         }
 
-        private void UpdateProductsTable(object sender, EventArgs args) {
+        private void UpdateProductsTable(object sender, EventArgs<OperationStatus> args) {
             _view.UpdateProductsTable();
+            _view.SetStatusLabel(args.value);
         }
     }
 }

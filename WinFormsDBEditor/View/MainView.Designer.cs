@@ -62,9 +62,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.36735F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.63265F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 741);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 761);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // TablesTabControl
@@ -74,10 +74,10 @@
             this.TablesTabControl.Controls.Add(this.CustomersPage);
             this.TablesTabControl.Controls.Add(this.ProductsPage);
             this.TablesTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TablesTabControl.Location = new System.Drawing.Point(3, 139);
+            this.TablesTabControl.Location = new System.Drawing.Point(3, 79);
             this.TablesTabControl.Name = "TablesTabControl";
             this.TablesTabControl.SelectedIndex = 0;
-            this.TablesTabControl.Size = new System.Drawing.Size(778, 599);
+            this.TablesTabControl.Size = new System.Drawing.Size(778, 679);
             this.TablesTabControl.TabIndex = 3;
             this.TablesTabControl.SelectedIndexChanged += new System.EventHandler(this.TablesTabControl_SelectedIndexChanged);
             // 
@@ -124,7 +124,7 @@
             this.ProductsPage.Controls.Add(this.ProductsGridView);
             this.ProductsPage.Location = new System.Drawing.Point(4, 22);
             this.ProductsPage.Name = "ProductsPage";
-            this.ProductsPage.Size = new System.Drawing.Size(770, 573);
+            this.ProductsPage.Size = new System.Drawing.Size(770, 653);
             this.ProductsPage.TabIndex = 2;
             this.ProductsPage.Text = "Products";
             this.ProductsPage.UseVisualStyleBackColor = true;
@@ -135,7 +135,7 @@
             this.ProductsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProductsGridView.Location = new System.Drawing.Point(0, 0);
             this.ProductsGridView.Name = "ProductsGridView";
-            this.ProductsGridView.Size = new System.Drawing.Size(770, 573);
+            this.ProductsGridView.Size = new System.Drawing.Size(770, 653);
             this.ProductsGridView.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -147,18 +147,18 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.Controls.Add(this.StatusLabel, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.StatusLabel, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.MinimumSize = new System.Drawing.Size(800, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(800, 130);
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(800, 70);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // StatusLabel
@@ -166,7 +166,7 @@
             this.StatusLabel.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.StatusLabel, 4);
             this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.StatusLabel.Location = new System.Drawing.Point(10, 48);
+            this.StatusLabel.Location = new System.Drawing.Point(10, 5);
             this.StatusLabel.Margin = new System.Windows.Forms.Padding(10, 5, 3, 5);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(58, 22);
@@ -181,11 +181,11 @@
             this.flowLayoutPanel1.Controls.Add(this.DeleteRecordButton);
             this.flowLayoutPanel1.Controls.Add(this.FilterButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 86);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(480, 44);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(480, 35);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
             // NewRecordButton
@@ -239,9 +239,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 741);
+            this.ClientSize = new System.Drawing.Size(784, 761);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 800);
             this.Name = "MainView";
             this.Text = "Nwind DB Editor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

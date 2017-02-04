@@ -82,6 +82,18 @@ namespace WinFormsDBEditor {
             productsSource.ResetBindings(false);
         }
 
+        public void SetStatusLabel(OperationStatus status) {
+            if (status == OperationStatus.New) {
+                StatusLabel.Text = "Row added";
+            }
+            else if (status == OperationStatus.Edited) {
+                StatusLabel.Text = "Row edited";
+            }
+            else if (status == OperationStatus.Deleted) {
+                StatusLabel.Text = "Row deleted";
+            }
+        }
+
         protected virtual void OnTabChange(EventArgs<int> args) {
             var eventHandler = this.TabChange;
             if (eventHandler != null)
@@ -132,5 +144,7 @@ namespace WinFormsDBEditor {
             else if (TablesTabControl.SelectedIndex == 2)
                 OnDeleteRecordCommand(new EventArgs<object>(ProductsGridView.CurrentRow.DataBoundItem));
         }
+
+
     }
 }

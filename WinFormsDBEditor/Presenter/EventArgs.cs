@@ -16,4 +16,8 @@ namespace WinFormsDBEditor.Presenter {
             get { return _value; }
         }
     }
+
+    public enum OperationStatus {
+        New, Edited, Deleted
+    }
 }

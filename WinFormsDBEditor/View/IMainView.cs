@@ -17,6 +17,7 @@ namespace WinFormsDBEditor.View {
         void UpdateOrdersTable();
         void UpdateCustomersTable();
         void UpdateProductsTable();
+        void SetStatusLabel(OperationStatus status);
 
         event EventHandler<EventArgs<int>> TabChange;
         event EventHandler NewRecordCommand;
