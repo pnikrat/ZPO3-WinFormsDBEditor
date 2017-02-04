@@ -121,6 +121,21 @@ namespace WinFormsDBEditor.View {
                     return false;
                 }
             }
+
+            short result;
+            if (!short.TryParse(UnitsInStockTextBox.Text, out result)) {
+                errorProvider1.SetError(UnitsInStockTextBox, "Value must be lower than 32767");
+                return false;
+            }
+            if (!short.TryParse(UnitsOnOrderTextBox.Text, out result)) {
+                errorProvider1.SetError(UnitsOnOrderTextBox, "Value must be lower than 32767");
+                return false;
+            }
+            if (!short.TryParse(ReorderLevelTextBox.Text, out result)) {
+                errorProvider1.SetError(ReorderLevelTextBox, "Value must be lower than 32767");
+                return false;
+            }
+
             return true;
         }
 

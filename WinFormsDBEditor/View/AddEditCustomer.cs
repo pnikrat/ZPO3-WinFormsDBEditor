@@ -123,11 +123,6 @@ namespace WinFormsDBEditor.View {
                 }
             }
 
-            if (PostalCodeTextBox.Text.Length > 10) {
-                errorProvider1.SetError(PostalCodeTextBox, "Value must be shorter than 10 characters");
-                return false;
-            }
-
             var boxes = Controls.OfType<TextBox>();
 
             foreach (var box in boxes) {
@@ -135,6 +130,10 @@ namespace WinFormsDBEditor.View {
                     errorProvider1.SetError(box, "Please fill the required field");
                     return false;
                 }
+            }
+            if (PostalCodeTextBox.Text.Length > 10) {
+                errorProvider1.SetError(PostalCodeTextBox, "Value must be shorter than 10 characters");
+                return false;
             }
             return true;
         }
