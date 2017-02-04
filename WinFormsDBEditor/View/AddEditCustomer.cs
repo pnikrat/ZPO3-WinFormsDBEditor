@@ -63,8 +63,8 @@ namespace WinFormsDBEditor.View {
             RegionTextBox.Text = (editedRow.IsRegionNull()) ? string.Empty : editedRow.Region;
             PostalCodeTextBox.Text = (editedRow.IsPostalCodeNull()) ? string.Empty : editedRow.PostalCode;
             CountryTextBox.Text = editedRow.Country;
-            PhoneBox.Text = editedRow.Phone;
-            FaxBox.Text = (editedRow.IsFaxNull()) ? string.Empty : editedRow.Fax;
+            PhoneTextBox.Text = editedRow.Phone;
+            FaxTextBox.Text = (editedRow.IsFaxNull()) ? string.Empty : editedRow.Fax;
 
           /*  ShippedDatePicker.Value = (editedRow.IsShippedDateNull()) ? DateTime.Now.Date : editedRow.ShippedDate;
             ShipRegionTextBox.Text = (editedRow.IsShipRegionNull()) ? string.Empty : editedRow.ShipRegion;
@@ -95,8 +95,8 @@ namespace WinFormsDBEditor.View {
             theRow.Region = RegionTextBox.Text;
             theRow.PostalCode = PostalCodeTextBox.Text;
             theRow.Country = CountryTextBox.Text;
-            theRow.Phone = PhoneBox.Text;
-            theRow.Fax = FaxBox.Text;
+            theRow.Phone = PhoneTextBox.Text;
+            theRow.Fax = FaxTextBox.Text;
             if (isNew)
                 theSet.Customers.Rows.Add(theRow);
 
@@ -142,6 +142,22 @@ namespace WinFormsDBEditor.View {
             errorProvider1.Clear();
         }
 
+        private void PhoneTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 32
+                && e.KeyChar != 40 && e.KeyChar != 41
+                && e.KeyChar !=45 && e.KeyChar !=46) {
+                e.Handled = true;
+                return;
+            }
+        }
 
+        private void FaxTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 32
+                && e.KeyChar != 40 && e.KeyChar != 41
+                && e.KeyChar != 45 && e.KeyChar != 46) {
+                e.Handled = true;
+                return;
+            }
+        }
     }
 }

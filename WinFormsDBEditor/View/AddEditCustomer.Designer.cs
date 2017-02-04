@@ -40,14 +40,14 @@
             this.CountryLabel = new System.Windows.Forms.Label();
             this.CountryTextBox = new System.Windows.Forms.TextBox();
             this.PhoneLabel = new System.Windows.Forms.Label();
-            this.PhoneBox = new System.Windows.Forms.MaskedTextBox();
             this.FaxLabel = new System.Windows.Forms.Label();
-            this.FaxBox = new System.Windows.Forms.MaskedTextBox();
             this.CustomerIDComboBox = new System.Windows.Forms.ComboBox();
             this.CompanyNameTextBox = new System.Windows.Forms.TextBox();
             this.ContactNameTextBox = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.PostalCodeTextBox = new System.Windows.Forms.TextBox();
+            this.PhoneTextBox = new System.Windows.Forms.TextBox();
+            this.FaxTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,14 +186,6 @@
             this.PhoneLabel.TabIndex = 38;
             this.PhoneLabel.Text = "Phone";
             // 
-            // PhoneBox
-            // 
-            this.PhoneBox.Location = new System.Drawing.Point(130, 248);
-            this.PhoneBox.Mask = "(999) 000-0000";
-            this.PhoneBox.Name = "PhoneBox";
-            this.PhoneBox.Size = new System.Drawing.Size(142, 20);
-            this.PhoneBox.TabIndex = 9;
-            // 
             // FaxLabel
             // 
             this.FaxLabel.AutoSize = true;
@@ -202,14 +194,6 @@
             this.FaxLabel.Size = new System.Drawing.Size(24, 13);
             this.FaxLabel.TabIndex = 40;
             this.FaxLabel.Text = "Fax";
-            // 
-            // FaxBox
-            // 
-            this.FaxBox.Location = new System.Drawing.Point(130, 274);
-            this.FaxBox.Mask = "(999) 000-0000";
-            this.FaxBox.Name = "FaxBox";
-            this.FaxBox.Size = new System.Drawing.Size(142, 20);
-            this.FaxBox.TabIndex = 10;
             // 
             // CustomerIDComboBox
             // 
@@ -244,18 +228,34 @@
             this.PostalCodeTextBox.Size = new System.Drawing.Size(142, 20);
             this.PostalCodeTextBox.TabIndex = 7;
             // 
+            // PhoneTextBox
+            // 
+            this.PhoneTextBox.Location = new System.Drawing.Point(130, 248);
+            this.PhoneTextBox.Name = "PhoneTextBox";
+            this.PhoneTextBox.Size = new System.Drawing.Size(142, 20);
+            this.PhoneTextBox.TabIndex = 9;
+            this.PhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneTextBox_KeyPress);
+            // 
+            // FaxTextBox
+            // 
+            this.FaxTextBox.Location = new System.Drawing.Point(130, 274);
+            this.FaxTextBox.Name = "FaxTextBox";
+            this.FaxTextBox.Size = new System.Drawing.Size(142, 20);
+            this.FaxTextBox.TabIndex = 10;
+            this.FaxTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FaxTextBox_KeyPress);
+            // 
             // AddEditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 354);
+            this.Controls.Add(this.FaxTextBox);
+            this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.PostalCodeTextBox);
             this.Controls.Add(this.ContactNameTextBox);
             this.Controls.Add(this.CompanyNameTextBox);
             this.Controls.Add(this.CustomerIDComboBox);
-            this.Controls.Add(this.FaxBox);
             this.Controls.Add(this.FaxLabel);
-            this.Controls.Add(this.PhoneBox);
             this.Controls.Add(this.PhoneLabel);
             this.Controls.Add(this.CountryTextBox);
             this.Controls.Add(this.CountryLabel);
@@ -300,13 +300,13 @@
         private System.Windows.Forms.Label CountryLabel;
         private System.Windows.Forms.TextBox CountryTextBox;
         private System.Windows.Forms.Label PhoneLabel;
-        private System.Windows.Forms.MaskedTextBox PhoneBox;
         private System.Windows.Forms.Label FaxLabel;
-        private System.Windows.Forms.MaskedTextBox FaxBox;
         private System.Windows.Forms.ComboBox CustomerIDComboBox;
         private System.Windows.Forms.TextBox CompanyNameTextBox;
         private System.Windows.Forms.TextBox ContactNameTextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox PostalCodeTextBox;
+        private System.Windows.Forms.TextBox FaxTextBox;
+        private System.Windows.Forms.TextBox PhoneTextBox;
     }
 }
