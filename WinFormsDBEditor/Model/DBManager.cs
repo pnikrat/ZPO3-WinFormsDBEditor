@@ -96,26 +96,5 @@ namespace WinFormsDBEditor.Model {
         public NwindTypedDS.OrdersDataTable getOrdersTable() {
             return theSet.Orders;
         }
-
-
-
-        // methods to be used soon
-        public DataView getCustomersFromLondon()
-        {
-            return new DataView(theSet.Customers, "City = 'London'", "City", DataViewRowState.CurrentRows);
-        }
-
-        public DataView getOrdersFiltered()
-        {
-            return new DataView(theSet.Orders, "ShipCity = 'Berlin'", "OrderID", DataViewRowState.CurrentRows);
-        }
-
-        public void EditOrderRow(int rowNumber) {
-            
-            //theSet.Orders.FindByOrderID(rowNumber)
-        }
-
-        //end methods to be used soon
-
     }
 }

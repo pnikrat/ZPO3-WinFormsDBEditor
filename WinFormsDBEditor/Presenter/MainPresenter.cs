@@ -15,7 +15,6 @@ namespace WinFormsDBEditor.Presenter {
         private IAddEditEntity _popupCustomer;
         private IAddEditEntity _popupProduct;
         private DBManager _data;
-        //private int currentRowNumber;
         private int currentTab;
 
         public MainPresenter(IMainView MainView) {
